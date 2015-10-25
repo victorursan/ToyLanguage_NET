@@ -40,6 +40,10 @@
     <Compile Include="src\Models\Map\MapInterface.cs" />
     <Compile Include="src\Models\Stack\StackInterface.cs" />
     <Compile Include="src\Models\Statements\IStmt.cs" />
+    <Compile Include="src\Models\Expressions\ArithExp.cs" />
+    <Compile Include="src\Models\Expressions\ConstExp.cs" />
+    <Compile Include="src\Models\Map\ArrayDictionary.cs" />
+    <Compile Include="src\Models\List\ArrayList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
