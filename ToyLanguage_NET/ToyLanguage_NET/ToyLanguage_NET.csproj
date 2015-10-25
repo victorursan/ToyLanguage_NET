@@ -35,6 +35,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Models\List\ListInterface.cs" />
+    <Compile Include="src\Models\Expressions\Exp.cs" />
+    <Compile Include="src\Models\Map\MapInterface.cs" />
+    <Compile Include="src\Models\Stack\StackInterface.cs" />
+    <Compile Include="src\Models\Statements\IStmt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="src\Models\Map\" />
+    <Folder Include="src\Models\Stack\" />
+    <Folder Include="src\Models\Statements\" />
+    <Folder Include="src\Models\Expressions\" />
+  </ItemGroup>
 </Project>
