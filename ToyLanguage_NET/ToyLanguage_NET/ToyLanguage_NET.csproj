@@ -54,6 +54,8 @@
     <Compile Include="src\Repository\Repository.cs" />
     <Compile Include="src\Models\PrgState\PrgState.cs" />
     <Compile Include="src\Repository\MyRepository.cs" />
+    <Compile Include="src\Controller\Controller.cs" />
+    <Compile Include="src\Controller\MyStmtExecException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -63,5 +65,6 @@
     <Folder Include="src\Models\Expressions\" />
     <Folder Include="src\Repository\" />
     <Folder Include="src\Models\PrgState\" />
+    <Folder Include="src\Controller\" />
   </ItemGroup>
 </Project>
