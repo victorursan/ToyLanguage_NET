@@ -44,6 +44,9 @@
     <Compile Include="src\Models\Expressions\ConstExp.cs" />
     <Compile Include="src\Models\Map\ArrayDictionary.cs" />
     <Compile Include="src\Models\List\ArrayList.cs" />
+    <Compile Include="src\Models\Stack\ArrayStack.cs" />
+    <Compile Include="src\Models\Expressions\UninitializedVariableException.cs" />
+    <Compile Include="src\Models\Expressions\VarExp.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
