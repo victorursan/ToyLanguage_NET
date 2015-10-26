@@ -10,7 +10,7 @@ namespace ToyLanguage_NET {
 
 		#region Exp implementation
 
-		int Exp.eval (MapInterface tbl) {
+		public int eval (MapInterface tbl) {
 			if (tbl.ContainsKey (id)) {
 				return tbl [id];
 			} else {
@@ -18,7 +18,7 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		string Exp.toStr () {
+		public string toStr () {
 			return " " + id + " ";
 		}
 

@@ -2,7 +2,7 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public interface MapInterface: IEnumerable {
+	public interface MapInterface {
 		int Count { get; }
 
 		String[] Keys { get; }

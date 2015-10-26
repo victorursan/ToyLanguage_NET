@@ -2,7 +2,7 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public interface StackInterface: IEnumerable {
+	public interface StackInterface {
 		int Count { get; }
 		IStmt Pop();
 		IStmt Peek();

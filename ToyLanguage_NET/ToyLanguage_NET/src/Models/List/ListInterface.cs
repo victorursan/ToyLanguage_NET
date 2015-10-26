@@ -3,15 +3,13 @@ using System.Collections;
 
 namespace ToyLanguage_NET {
 	public interface ListInterface: IEnumerable {
-		void Add (Object e);
+		void Add (int e);
 
-		void Remove (Object e);
-
-		bool Find (Object e);
+		bool Find (int e);
 
 		int Length{ get; }
 
-		Object this [int index]{ get; set; }
+		int this [int index]{ get; set; }
 	}
 
 }
