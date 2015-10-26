@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class MyRepository {
+	public class MyRepository: Repository {
 		private PrgState[] prgStates;
 		private int prgNumber = 0;
 

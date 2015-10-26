@@ -37,13 +37,13 @@ namespace ToyLanguage_NET {
 				Console.WriteLine (element.toStr ());
 			}
 			while (tmpStack.Count > 0) {
-				exeStack.Push (exeStack.Pop ());
+				exeStack.Push (tmpStack.Pop ());
 			}
 
 			Console.WriteLine ("\nSymbol table");
 
-			foreach (String key in symTable.Keys) {
-				Console.WriteLine (key + " = " + symTable [key].ToString ());
+			for (int i = 0; i < symTable.Count; i++) {
+				Console.WriteLine (symTable.Keys[i] + " = " + symTable [symTable.Keys[i]].ToString ());
 					
 			}
 

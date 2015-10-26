@@ -49,7 +49,7 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		public string[] Keys {
+		public String[] Keys {
 			get {
 				return keys;
 			}
