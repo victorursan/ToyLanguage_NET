@@ -2,14 +2,14 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public interface ListInterface: IEnumerable {
-		void Add (int e);
+	public interface ListInterface<T>: IEnumerable {
+		void Add (T e);
 
-		bool Find (int e);
+		bool Find (T e);
 
 		int Length{ get; }
 
-		int this [int index]{ get; set; }
+		T this [int index]{ get; set; }
 	}
 
 }

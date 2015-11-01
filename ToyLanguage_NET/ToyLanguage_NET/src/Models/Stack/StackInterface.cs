@@ -2,11 +2,11 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public interface StackInterface {
+	public interface StackInterface<T> {
 		int Count { get; }
-		IStmt Pop();
-		IStmt Peek();
-		void Push (IStmt obj);
+		T Pop();
+		T Peek();
+		void Push (T obj);
 	}
 }
 

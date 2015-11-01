@@ -1,20 +1,20 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ArrayDictionary: MapInterface {
-		private String[] keys;
-		private int[] values;
+	public class ArrayDictionary<K, V>: MapInterface<K, V> {
+		private K[] keys;
+		private V[] values;
 		private int nrElements;
 
 		public ArrayDictionary () {
-			keys = new String[10];
-			values = new int[10];
+			keys = new K[10];
+			values = new V[10];
 			nrElements = 0;
 		}
 
 		private void resize () {
-			String[] tmpKeys = new String[keys.Length * 2];
-			int[] tmpValues = new int[values.Length * 2];
+			K[] tmpKeys = new K[keys.Length * 2];
+			V[] tmpValues = new V[values.Length * 2];
 			System.Array.Copy (keys, 0, tmpKeys, 0, keys.Length);
 			System.Array.Copy (values, 0, tmpValues, 0, values.Length);
 			keys = tmpKeys;
@@ -23,7 +23,7 @@ namespace ToyLanguage_NET {
 
 		#region MapInterface implementation
 
-		public void Add (string key, int value) {
+		public void Add (K key, V value) {
 			if (!this.ContainsKey (key)) {
 				if (keys.Length >= nrElements) {
 					resize ();
@@ -34,7 +34,7 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		public bool ContainsKey (string key) {
+		public bool ContainsKey (K key) {
 			for (int i = 0; i < nrElements; i++) {
 				if (keys [i].Equals (key)) {
 					return true;
@@ -49,13 +49,13 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		public String[] Keys {
+		public K[] Keys {
 			get {
 				return keys;
 			}
 		}
 
-		public int this [string key] {
+		public V this [K key] {
 			get {
 				for (int i = 0; i < nrElements; i++) {
 					if (keys[i].Equals(key)) {

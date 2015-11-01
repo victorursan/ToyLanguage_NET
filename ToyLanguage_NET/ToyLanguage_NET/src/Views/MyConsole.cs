@@ -197,7 +197,7 @@ namespace ToyLanguage_NET {
 
 		private void inputProgram() {
 			IStmt prgStatement = inputStatement();
-			currentProgram = new PrgState(new ArrayStack(), new ArrayDictionary(), new ArrayList(), prgStatement);
+			currentProgram = new PrgState(new ArrayStack<IStmt>(), new ArrayDictionary<String, int>(), new ArrayList<int>(), prgStatement);
 			PrgState[] programs = {currentProgram};
 			currentProgram.printState();
 			ctrl = new Controller(new MyRepository(programs));

@@ -2,30 +2,30 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public class ArrayList: ListInterface {
-		private int[] elements;
+	public class ArrayList<T>: ListInterface<T> {
+		private T[] elements;
 		private int nrElements;
 
 		public ArrayList() {
-			elements = new int[10];
+			elements = new T[10];
 			nrElements = 0;
 		}
 
 		private void resize() {
-			int[] tmpKeys = new int[elements.Length * 2];
+			T[] tmpKeys = new T[elements.Length * 2];
 			System.Array.Copy (elements, tmpKeys, elements.Length);
 			elements = tmpKeys;
 		}
 
 		#region ListInterface implementation
-		public void Add (int e) {
+		public void Add (T e) {
 			if (nrElements == elements.Length) {
 				resize();
 			}
 			elements[nrElements++] = e;
 		}
 
-		public bool Find (int e) {
+		public bool Find (T e) {
 			for (int i = 0; i < nrElements; i++) {
 				if (elements[i].Equals (e)) {
 					return true;
@@ -39,7 +39,7 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		public int this[int index] {
+		public T this[int index] {
 			get { if (index < nrElements && index >= 0) {
 					return elements [index];
 				}
@@ -62,8 +62,8 @@ namespace ToyLanguage_NET {
 
 		private class ALEnumerator: IEnumerator {
 			private int cursor;
-			private ArrayList al;
-			public ALEnumerator(ArrayList al) {
+			private ArrayList<T> al;
+			public ALEnumerator(ArrayList<T> al) {
 				this.al = al;
 				cursor = -1;
 			}

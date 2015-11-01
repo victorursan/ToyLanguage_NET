@@ -2,15 +2,15 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public interface MapInterface {
+	public interface MapInterface<K, V> {
 		int Count { get; }
 
-		String[] Keys { get; }
+		K[] Keys { get; }
 
-		void Add (String key, int value);
+		void Add (K key, V value);
 
-		bool ContainsKey (String key);
+		bool ContainsKey (K key);
 
-		int this [String key] { get; set; }
+		V this [K key] { get; set; }
 	}
 }

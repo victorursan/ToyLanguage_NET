@@ -10,7 +10,7 @@ namespace ToyLanguage_NET {
 
 		#region Exp implementation
 
-		public int eval (MapInterface tbl) {
+		public int eval (MapInterface<String, int> tbl) {
 			if (tbl.ContainsKey (id)) {
 				return tbl [id];
 			} else {

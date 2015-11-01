@@ -1,38 +1,38 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ArrayStack: StackInterface {
-		private IStmt[] elements;
+	public class ArrayStack<T>: StackInterface<T> {
+		private T[] elements;
 		private int nrElements;
 
 		public ArrayStack () {
 			nrElements = 0;
-			elements = new IStmt[10];
+			elements = new T[10];
 		}
 
 		private void resize () {
-			IStmt[] tmp = new IStmt[elements.Length * 2];
+			T[] tmp = new T[elements.Length * 2];
 			System.Array.Copy (elements, 0, tmp, 0, elements.Length);
 			elements = tmp;
 		}
 
 		#region StackInterface implementation
 
-		public IStmt Pop () {
+		public T Pop () {
 			if (nrElements > 0) {
 				return  elements [--nrElements];
 			}
-			return null;
+			throw new FieldAccessException ();
 		}
 
-		public IStmt Peek () {
+		public T Peek () {
 			if (nrElements > 0) {
 				return elements [nrElements - 1];
 			}
-			return null;
+			throw new FieldAccessException ();
 		}
 
-		public void Push (IStmt obj) {
+		public void Push (T obj) {
 			if (nrElements == elements.Length) {
 				resize ();
 			}

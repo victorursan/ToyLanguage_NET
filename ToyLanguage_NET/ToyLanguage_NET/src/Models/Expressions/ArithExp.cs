@@ -12,7 +12,7 @@ namespace ToyLanguage_NET {
 			this.op = op;
 		}
 			
-		public int eval(MapInterface tbl) {
+		public int eval(MapInterface<String, int> tbl) {
 			if (op == "+") {
 				return (e1.eval(tbl) + e2.eval(tbl));
 			}

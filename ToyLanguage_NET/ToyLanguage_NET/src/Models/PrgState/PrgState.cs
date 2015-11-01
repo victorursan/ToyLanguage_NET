@@ -2,13 +2,13 @@
 
 namespace ToyLanguage_NET {
 	public class PrgState {
-		private StackInterface exeStack;
-		private MapInterface symTable;
-		private ListInterface output;
+		private StackInterface<IStmt> exeStack;
+		private MapInterface<String, int> symTable;
+		private ListInterface<int> output;
 		private IStmt originalProgram;
 		//optional field, but good to have
 
-		public PrgState (StackInterface stack, MapInterface dictionary, ListInterface list, IStmt prg) {
+		public PrgState (StackInterface<IStmt> stack, MapInterface<String, int> dictionary, ListInterface<int> list, IStmt prg) {
 			exeStack = stack;
 			symTable = dictionary;
 			output = list;
@@ -16,20 +16,20 @@ namespace ToyLanguage_NET {
 			exeStack.Push (originalProgram);
 		}
 
-		public StackInterface getExeStack () {
+		public StackInterface<IStmt> getExeStack () {
 			return exeStack;
 		}
 
-		public MapInterface getSymTable () {
+		public MapInterface<String, int> getSymTable () {
 			return symTable;
 		}
 
-		public ListInterface getOut () {
+		public ListInterface<int> getOut () {
 			return output;
 		}
 
 		public void printState () {
-			StackInterface tmpStack = new ArrayStack ();
+			StackInterface<IStmt> tmpStack = new ArrayStack<IStmt> ();
 			Console.WriteLine ("Exec Stack:");
 			while (exeStack.Count > 0) {
 				IStmt element = exeStack.Pop ();
@@ -47,7 +47,7 @@ namespace ToyLanguage_NET {
 					
 			}
 
-			Console.WriteLine ("\nSymbol table");
+			Console.WriteLine ("\nOutput");
 
 			foreach (int outp in output) {
 				Console.WriteLine (outp);

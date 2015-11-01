@@ -13,7 +13,7 @@ namespace ToyLanguage_NET {
 		}
 
 		public void oneStep() {
-			StackInterface stk = crtPrgState.getExeStack();
+			StackInterface<IStmt> stk = crtPrgState.getExeStack();
 			if (stk.Count == 0) {
 				throw new MyStmtExecException();
 			}
@@ -26,7 +26,7 @@ namespace ToyLanguage_NET {
 				AssignStmt crtStmt1 = (AssignStmt) crtStmt;
 				Exp exp = crtStmt1.exp;
 				String id = crtStmt1.id;
-				MapInterface symTbl = repo.getCrtProgram().getSymTable();
+				MapInterface<String, int> symTbl = repo.getCrtProgram().getSymTable();
 				int val = exp.eval(symTbl);
 				if (symTbl.ContainsKey(id)) {
 					symTbl[id] = val;
@@ -35,7 +35,7 @@ namespace ToyLanguage_NET {
 				}
 			} else if (crtStmt is IfStmt) {
 				IfStmt crtStmt1 = (IfStmt) crtStmt;
-				MapInterface symTbl = crtPrgState.getSymTable();
+				MapInterface<String, int> symTbl = crtPrgState.getSymTable();
 				if (crtStmt1.exp.eval(symTbl) != 0) {
 					stk.Push(crtStmt1.thenS);
 				} else {
@@ -43,7 +43,7 @@ namespace ToyLanguage_NET {
 				}
 			} else if (crtStmt is PrintStmt) {
 				PrintStmt crtStmt1 = (PrintStmt) crtStmt;
-				ListInterface output = crtPrgState.getOut();
+				ListInterface<int> output = crtPrgState.getOut();
 				output.Add(crtStmt1.exp.eval(crtPrgState.getSymTable()));
 			}
 			if (printFlag) {

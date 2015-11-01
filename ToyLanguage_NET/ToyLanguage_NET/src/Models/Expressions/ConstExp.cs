@@ -8,7 +8,7 @@ namespace ToyLanguage_NET {
 			this.number = number;
 		}
 			
-		public int eval(MapInterface tbl) {
+		public int eval(MapInterface<String, int> tbl) {
 			return number;
 		}
 			
