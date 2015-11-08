@@ -1,84 +1,61 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+
 
 namespace ToyLanguage_NET {
 	public class MyLibraryList<T>: ListInterface<T> {
-		private T[] elements;
-		private int nrElements;
+		private List<T> elements;
 
-		public MyLibraryList() {
-			elements = new T[10];
-			nrElements = 0;
-		}
-
-		private void resize() {
-			T[] tmpKeys = new T[elements.Length * 2];
-			System.Array.Copy (elements, tmpKeys, elements.Length);
-			elements = tmpKeys;
+		public MyLibraryList () {
+			elements = new List<T> ();
 		}
 
 		#region ListInterface implementation
+
 		public void Add (T e) {
-			if (nrElements == elements.Length) {
-				resize();
-			}
-			elements[nrElements++] = e;
+			elements.Add (e);
 		}
 
-		public bool Find (T e) {
-			for (int i = 0; i < nrElements; i++) {
-				if (elements[i].Equals (e)) {
-					return true;
-				}
-			}
-			return false;
+		public bool Contains (T e) {
+			return elements.Contains (e);
 		}
-		public int Length {
+
+		public int Count {
 			get {
-				return nrElements;
+				return elements.Count;
 			}
 		}
 
-		public T this[int index] {
-			get { if (index < nrElements && index >= 0) {
+		public T this [int index] {
+			get {
+				if (index < elements.Count && index >= 0) {
 					return elements [index];
 				}
 				throw new AccessViolationException ();
 			}
-			set {  if (index < nrElements && index >= 0) {
+			set {
+				if (index < elements.Count && index >= 0) {
 					elements [index] = value;
-			} else {
-				elements [nrElements++] = value;
+				} else {
+					elements.Add (value);
+				}
 			}
-		}
 		}
 
 		#endregion
 
 		#region IEnumerable implementation
-		public IEnumerator GetEnumerator() {
-			return new ALEnumerator(this);
+
+		public IEnumerator GetEnumerator () {
+			return elements.GetEnumerator ();
 		}
 
-		private class ALEnumerator: IEnumerator {
-			private int cursor;
-			private MyLibraryList<T> al;
-			public ALEnumerator(MyLibraryList<T> al) {
-				this.al = al;
-				cursor = -1;
-			}
-			public bool MoveNext() {
-				cursor++;
-				return cursor < al.nrElements;
-			}
-			public Object Current {
-				get { return al.elements [cursor]; }
-			}
-			public void Reset() {
-				cursor = -1;
-			}
-		}	
 		#endregion
+
+		public override string ToString () {
+			return " [" + string.Join(", ", elements) + " ]";
+		}
 	}
 }
 

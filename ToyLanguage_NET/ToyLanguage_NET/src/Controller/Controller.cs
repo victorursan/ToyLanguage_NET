@@ -44,7 +44,7 @@ namespace ToyLanguage_NET {
 			} else if (crtStmt is PrintStmt) {
 				PrintStmt crtStmt1 = (PrintStmt) crtStmt;
 				ListInterface<int> output = crtPrgState.getOut();
-				output.Add(crtStmt1.exp.eval(crtPrgState.getSymTable()));
+				output.Add(crtStmt1.Exp.eval(crtPrgState.getSymTable()));
 			}
 			if (printFlag) {
 				crtPrgState.printState();

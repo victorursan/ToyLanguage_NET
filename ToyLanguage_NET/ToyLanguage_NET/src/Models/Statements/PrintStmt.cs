@@ -2,7 +2,7 @@
 
 namespace ToyLanguage_NET {
 	public class PrintStmt: IStmt {
-		public Exp exp;
+		private Exp exp;
 
 		public PrintStmt (Exp expression) {
 			exp = expression;

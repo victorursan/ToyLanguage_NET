@@ -1,80 +1,62 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace ToyLanguage_NET {
 	public class MyLibraryDictionary<K, V>: MapInterface<K, V> {
-		private K[] keys;
-		private V[] values;
-		private int nrElements;
+		private Dictionary<K, V> elements;
 
 		public MyLibraryDictionary () {
-			keys = new K[10];
-			values = new V[10];
-			nrElements = 0;
-		}
-
-		private void resize () {
-			K[] tmpKeys = new K[keys.Length * 2];
-			V[] tmpValues = new V[values.Length * 2];
-			System.Array.Copy (keys, 0, tmpKeys, 0, keys.Length);
-			System.Array.Copy (values, 0, tmpValues, 0, values.Length);
-			keys = tmpKeys;
-			values = tmpValues;
+			elements = new Dictionary<K, V> ();
 		}
 
 		#region MapInterface implementation
 
 		public void Add (K key, V value) {
-			if (!this.ContainsKey (key)) {
-				if (keys.Length >= nrElements) {
-					resize ();
-				}
-				keys [nrElements] = key;
-				values [nrElements] = value;
-				nrElements++;
-			}
+			elements.Add (key, value);
 		}
 
 		public bool ContainsKey (K key) {
-			for (int i = 0; i < nrElements; i++) {
-				if (keys [i].Equals (key)) {
-					return true;
-				}
-			}
-			return false;
+			return elements.ContainsKey (key);
 		}
 
 		public int Count {
 			get {
-				return nrElements;
+				return elements.Count;
 			}
 		}
 
-		public K[] Keys {
+		public Dictionary<K, V>.KeyCollection Keys {
 			get {
-				return keys;
+				return elements.Keys;
 			}
 		}
 
 		public V this [K key] {
 			get {
-				for (int i = 0; i < nrElements; i++) {
-					if (keys[i].Equals(key)) {
-						return values[i];
-					}
-				}
-				throw new AccessViolationException ();
+				return elements [key];
 			}
 			set {
-				for (int i = 0; i < nrElements; i++) {
-					if (keys[i].Equals(key)) {
-						values[i] = value;
-						return;
-					}
-				}
+				elements [key] = value;
 			}
 		}
 
 		#endregion
+
+		#region IEnumerable implementation
+
+		public IEnumerator GetEnumerator () {
+			return elements.GetEnumerator ();
+		}
+		#endregion
+		public override string ToString () {
+			string toString = "";
+			foreach (K key in elements.Keys)
+			{
+				toString += key + "=" + elements[key] + "\n";
+			}
+			return toString;
+		}
 
 	}
 }

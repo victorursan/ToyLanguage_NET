@@ -5,9 +5,9 @@ namespace ToyLanguage_NET {
 	public interface ListInterface<T>: IEnumerable {
 		void Add (T e);
 
-		bool Find (T e);
+		bool Contains (T e);
 
-		int Length{ get; }
+		int Count{ get; }
 
 		T this [int index]{ get; set; }
 	}
