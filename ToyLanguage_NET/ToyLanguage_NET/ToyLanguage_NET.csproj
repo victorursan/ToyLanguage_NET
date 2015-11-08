@@ -42,9 +42,6 @@
     <Compile Include="src\Models\Statements\IStmt.cs" />
     <Compile Include="src\Models\Expressions\ArithExp.cs" />
     <Compile Include="src\Models\Expressions\ConstExp.cs" />
-    <Compile Include="src\Models\Map\ArrayDictionary.cs" />
-    <Compile Include="src\Models\List\ArrayList.cs" />
-    <Compile Include="src\Models\Stack\ArrayStack.cs" />
     <Compile Include="src\Models\Expressions\UninitializedVariableException.cs" />
     <Compile Include="src\Models\Expressions\VarExp.cs" />
     <Compile Include="src\Models\Statements\AssignStmt.cs" />
@@ -57,6 +54,9 @@
     <Compile Include="src\Controller\Controller.cs" />
     <Compile Include="src\Controller\MyStmtExecException.cs" />
     <Compile Include="src\Views\MyConsole.cs" />
+    <Compile Include="src\Models\List\MyLibraryList.cs" />
+    <Compile Include="src\Models\Map\MyLibraryDictionary.cs" />
+    <Compile Include="src\Models\Stack\MyLibraryStack.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

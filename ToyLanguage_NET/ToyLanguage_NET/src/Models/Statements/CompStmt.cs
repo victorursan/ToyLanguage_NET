@@ -2,18 +2,36 @@
 
 namespace ToyLanguage_NET {
 	public class CompStmt: IStmt {
-		public IStmt first;
-		public IStmt second;
+		private IStmt first;
+		private IStmt second;
 
-		public CompStmt(IStmt left, IStmt right) {
+		public IStmt First {
+			get {
+				return first;
+			}
+			set {
+				first = value;
+			}
+		}
+
+		public IStmt Second {
+			get {
+				return second;
+			}
+			set {
+				second = value;
+			}
+		}
+
+		public CompStmt (IStmt left, IStmt right) {
 			first = left;
 			second = right;
 		}
 
 		#region IStmt implementation
 
-		public string toStr () {
-			return "(" + first.toStr() + "; " + second.toStr() + ")";
+		public override string ToString () {
+			return "(" + first.ToString () + "; " + second.ToString () + ")";
 		}
 
 		#endregion

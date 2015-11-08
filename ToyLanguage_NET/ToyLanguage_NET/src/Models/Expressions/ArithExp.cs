@@ -1,35 +1,58 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ArithExp: Exp{
-		public Exp e1;
-		public Exp e2;
-		public String op;
+	public class ArithExp: Exp {
+		private Exp e1;
+		private Exp e2;
+		private String op;
 
-		public ArithExp(Exp e1, String op, Exp e2) {
+		public ArithExp (Exp e1, String op, Exp e2) {
 			this.e1 = e1;
 			this.e2 = e2;
 			this.op = op;
 		}
-			
-		public int eval(MapInterface<String, int> tbl) {
-			if (op == "+") {
-				return (e1.eval(tbl) + e2.eval(tbl));
+
+		public Exp E1 {
+			get {
+				return e1;
 			}
-			if (op == "-") {
-				return (e1.eval(tbl) - e2.eval(tbl));
+			set {
+				e1 = value;
 			}
-			if (op == "*") {
-				return (e1.eval(tbl) * e2.eval(tbl));
+		}
+
+		public Exp E2 {
+			get {
+				return e2;
 			}
-			if (op == "/") {
-				return (e1.eval(tbl) / e2.eval(tbl));
+			set {
+				e2 = value;
 			}
+		}
+
+		public String Op {
+			get {
+				return op;
+			}
+			set {
+				op = value;
+			}
+		}
+
+		#region Exp implementation
+
+		public int eval (MapInterface<String, int> tbl) {
+			if (op == "+") return (e1.eval (tbl) + e2.eval (tbl));
+			if (op == "-") return (e1.eval (tbl) - e2.eval (tbl));
+			if (op == "*") return (e1.eval (tbl) * e2.eval (tbl));
+			if (op == "/") return (e1.eval (tbl) / e2.eval (tbl));
 			return 0;
 		}
-			
-		public String toStr() {
-			return "(" + e1.toStr() + " " + op + " " + e2.toStr() + ")" ;
+
+		#endregion
+
+		public override string ToString () {
+			return "(" + e1.ToString () + " " + op + " " + e2.ToString () + ")";
 		}
 
 	}

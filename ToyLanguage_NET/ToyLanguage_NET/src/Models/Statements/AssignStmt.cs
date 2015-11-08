@@ -1,22 +1,38 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class AssignStmt : IStmt{
-		public String id;
-		public Exp exp;
+	public class AssignStmt : IStmt {
+		private String id;
+		private Exp exp;
 
-		public AssignStmt(String id, Exp exp) {
+		public String Id {
+			get {
+				return id;
+			}
+			set {
+				id = value;
+			}
+		}
+
+		public Exp Exp {
+			get {
+				return exp;
+			}
+			set {
+				exp = value;
+			}
+		}
+
+		public AssignStmt (String id, Exp exp) {
 			this.id = id;
 			this.exp = exp;
 		}
-			
-		#region IStmt implementation
 
-		public string toStr () {
-			return id + " = " + exp.toStr();
+
+		public override string ToString () {
+			return id.ToString() + " = " + exp.ToString();
 		}
 
-		#endregion
 	}
 }
 

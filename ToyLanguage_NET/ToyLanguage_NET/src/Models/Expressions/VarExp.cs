@@ -8,6 +8,15 @@ namespace ToyLanguage_NET {
 			this.id = id;
 		}
 
+		public String Id {
+			get {
+				return id;
+			}
+			set {
+				id = value;
+			}
+		}
+
 		#region Exp implementation
 
 		public int eval (MapInterface<String, int> tbl) {
@@ -17,12 +26,13 @@ namespace ToyLanguage_NET {
 				throw new UninitializedVariableException ();
 			}
 		}
+			
+		#endregion
 
-		public string toStr () {
+		public override string ToString () {
 			return " " + id + " ";
 		}
 
-		#endregion
 	}
 }
 

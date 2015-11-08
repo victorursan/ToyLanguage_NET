@@ -20,12 +20,12 @@ namespace ToyLanguage_NET {
 			IStmt crtStmt = stk.Pop ();
 			if (crtStmt is CompStmt) {
 				CompStmt crtStmt1 = (CompStmt) crtStmt;
-				stk.Push(crtStmt1.second);
-				stk.Push(crtStmt1.first);
+				stk.Push(crtStmt1.Second);
+				stk.Push(crtStmt1.First);
 			} else if (crtStmt is AssignStmt) {
 				AssignStmt crtStmt1 = (AssignStmt) crtStmt;
-				Exp exp = crtStmt1.exp;
-				String id = crtStmt1.id;
+				Exp exp = crtStmt1.Exp;
+				String id = crtStmt1.Id;
 				MapInterface<String, int> symTbl = repo.getCrtProgram().getSymTable();
 				int val = exp.eval(symTbl);
 				if (symTbl.ContainsKey(id)) {
@@ -36,10 +36,10 @@ namespace ToyLanguage_NET {
 			} else if (crtStmt is IfStmt) {
 				IfStmt crtStmt1 = (IfStmt) crtStmt;
 				MapInterface<String, int> symTbl = crtPrgState.getSymTable();
-				if (crtStmt1.exp.eval(symTbl) != 0) {
-					stk.Push(crtStmt1.thenS);
+				if (crtStmt1.Exp.eval(symTbl) != 0) {
+					stk.Push(crtStmt1.ThenS);
 				} else {
-					stk.Push(crtStmt1.elseS);
+					stk.Push(crtStmt1.ElseS);
 				}
 			} else if (crtStmt is PrintStmt) {
 				PrintStmt crtStmt1 = (PrintStmt) crtStmt;

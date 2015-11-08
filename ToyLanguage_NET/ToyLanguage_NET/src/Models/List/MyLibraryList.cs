@@ -2,11 +2,11 @@
 using System.Collections;
 
 namespace ToyLanguage_NET {
-	public class ArrayList<T>: ListInterface<T> {
+	public class MyLibraryList<T>: ListInterface<T> {
 		private T[] elements;
 		private int nrElements;
 
-		public ArrayList() {
+		public MyLibraryList() {
 			elements = new T[10];
 			nrElements = 0;
 		}
@@ -62,8 +62,8 @@ namespace ToyLanguage_NET {
 
 		private class ALEnumerator: IEnumerator {
 			private int cursor;
-			private ArrayList<T> al;
-			public ALEnumerator(ArrayList<T> al) {
+			private MyLibraryList<T> al;
+			public ALEnumerator(MyLibraryList<T> al) {
 				this.al = al;
 				cursor = -1;
 			}

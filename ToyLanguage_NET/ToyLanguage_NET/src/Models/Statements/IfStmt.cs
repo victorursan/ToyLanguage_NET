@@ -2,23 +2,48 @@
 
 namespace ToyLanguage_NET {
 	public class IfStmt: IStmt {
-		public Exp exp;
-		public IStmt thenS;
-		public IStmt elseS;
+		private Exp exp;
+		private IStmt thenS;
+		private IStmt elseS;
 
-		public IfStmt(Exp e, IStmt t, IStmt el) {
+		public Exp Exp {
+			get {
+				return exp;
+			}
+			set {
+				exp = value;
+			}
+		}
+
+		public IStmt ThenS {
+			get {
+				return thenS;
+			}
+			set {
+				thenS = value;
+			}
+		}
+
+		public IStmt ElseS {
+			get {
+				return elseS;
+			}
+			set {
+				elseS = value;
+			}
+		}
+
+		public IfStmt (Exp e, IStmt t, IStmt el) {
 			exp = e;
 			thenS = t;
 			elseS = el;
 		}
+			
 
-		#region IStmt implementation
-
-		public string toStr () {
-			return "IF( " +  exp.toStr() + " )THEN( " + thenS.toStr()  + " )ELSE( " + elseS.toStr() + " )";
+		public override string ToString () {
+			return "IF( " + exp.ToString () + " )THEN( " + thenS.ToString () + " )ELSE( " + elseS.ToString () + " )";
 		}
-
-		#endregion
+			
 	}
 }
 

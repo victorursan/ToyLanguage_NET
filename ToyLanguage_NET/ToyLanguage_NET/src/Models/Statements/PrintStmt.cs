@@ -4,17 +4,23 @@ namespace ToyLanguage_NET {
 	public class PrintStmt: IStmt {
 		public Exp exp;
 
-		public PrintStmt(Exp expression) {
-			exp =  expression;
+		public PrintStmt (Exp expression) {
+			exp = expression;
 		}
 
-		#region IStmt implementation
-
-		public string toStr () {
-			return "print( " + exp.toStr() + " )";
+		public Exp Exp {
+			get {
+				return exp;
+			}
+			set {
+				exp = value;
+			}
 		}
 
-		#endregion
+		public override string ToString () {
+			return "print( " + exp.ToString () + " )";
+		}
+
 	}
 }
 

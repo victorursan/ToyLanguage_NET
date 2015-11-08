@@ -1,12 +1,12 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ArrayDictionary<K, V>: MapInterface<K, V> {
+	public class MyLibraryDictionary<K, V>: MapInterface<K, V> {
 		private K[] keys;
 		private V[] values;
 		private int nrElements;
 
-		public ArrayDictionary () {
+		public MyLibraryDictionary () {
 			keys = new K[10];
 			values = new V[10];
 			nrElements = 0;

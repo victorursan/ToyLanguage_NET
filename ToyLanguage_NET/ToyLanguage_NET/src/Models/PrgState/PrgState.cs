@@ -29,12 +29,12 @@ namespace ToyLanguage_NET {
 		}
 
 		public void printState () {
-			StackInterface<IStmt> tmpStack = new ArrayStack<IStmt> ();
+			StackInterface<IStmt> tmpStack = new MyLibraryStack<IStmt> ();
 			Console.WriteLine ("Exec Stack:");
 			while (exeStack.Count > 0) {
 				IStmt element = exeStack.Pop ();
 				tmpStack.Push (element);
-				Console.WriteLine (element.toStr ());
+				Console.WriteLine (element.ToString ());
 			}
 			while (tmpStack.Count > 0) {
 				exeStack.Push (tmpStack.Pop ());
@@ -43,7 +43,7 @@ namespace ToyLanguage_NET {
 			Console.WriteLine ("\nSymbol table");
 
 			for (int i = 0; i < symTable.Count; i++) {
-				Console.WriteLine (symTable.Keys[i] + " = " + symTable [symTable.Keys[i]].ToString ());
+				Console.WriteLine (symTable.Keys [i] + " = " + symTable [symTable.Keys [i]].ToString ());
 					
 			}
 

@@ -2,17 +2,30 @@
 
 namespace ToyLanguage_NET {
 	public class ConstExp: Exp {
-		public int number;
+		private int number;
 
 		public ConstExp(int number) {
 			this.number = number;
 		}
+
+		public int Number {
+			get {
+				return number;
+			}
+			set {
+				number = value;
+			}
+		}
 			
+		#region Exp implementation
+
 		public int eval(MapInterface<String, int> tbl) {
 			return number;
 		}
-			
-		public String toStr() {
+
+		#endregion
+
+		public override string ToString () {
 			return " " + number + " ";
 		}
 	}

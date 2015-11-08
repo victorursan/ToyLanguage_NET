@@ -1,11 +1,11 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ArrayStack<T>: StackInterface<T> {
+	public class MyLibraryStack<T>: StackInterface<T> { 
 		private T[] elements;
 		private int nrElements;
 
-		public ArrayStack () {
+		public MyLibraryStack () {
 			nrElements = 0;
 			elements = new T[10];
 		}

@@ -2,7 +2,7 @@
 
 namespace ToyLanguage_NET {
 	public interface IStmt {
-		String toStr ();
+//		String toStr ();
 	}
 }
 
