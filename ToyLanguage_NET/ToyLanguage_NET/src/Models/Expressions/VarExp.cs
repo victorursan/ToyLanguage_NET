@@ -20,13 +20,11 @@ namespace ToyLanguage_NET {
 		#region Exp implementation
 
 		public int eval (MapInterface<String, int> tbl) {
-			if (tbl.ContainsKey (id)) {
+			if (tbl.ContainsKey (id))
 				return tbl [id];
-			} else {
-				throw new UninitializedVariableException ();
-			}
+			throw new UninitializedVariableException ();
 		}
-			
+
 		#endregion
 
 		public override string ToString () {

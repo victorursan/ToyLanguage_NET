@@ -17,14 +17,14 @@ namespace ToyLanguage_NET {
 			if (elements.Count > 0) {
 				return  elements. Pop();
 			}
-			throw new FieldAccessException ();
+			throw new EmptyStackException ();
 		}
 
 		public T Peek () {
 			if (elements.Count > 0) {
 				return elements. Peek();
 			}
-			throw new FieldAccessException ();
+			throw new EmptyStackException ();
 		}
 
 		public void Push (T obj) {

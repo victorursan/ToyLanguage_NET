@@ -34,9 +34,13 @@ namespace ToyLanguage_NET {
 
 		public V this [K key] {
 			get {
+				if (!ContainsKey (key))
+					throw new NoSuchKeyException ();
 				return elements [key];
 			}
 			set {
+				if (!ContainsKey (key))
+					throw new NoSuchKeyException ();
 				elements [key] = value;
 			}
 		}
@@ -48,12 +52,13 @@ namespace ToyLanguage_NET {
 		public IEnumerator GetEnumerator () {
 			return elements.GetEnumerator ();
 		}
+
 		#endregion
+
 		public override string ToString () {
 			string toString = "";
-			foreach (K key in elements.Keys)
-			{
-				toString += key + "=" + elements[key] + "\n";
+			foreach (K key in elements.Keys) {
+				toString += key + "=" + elements [key] + "\n";
 			}
 			return toString;
 		}

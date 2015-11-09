@@ -32,7 +32,7 @@ namespace ToyLanguage_NET {
 				if (index < elements.Count && index >= 0) {
 					return elements [index];
 				}
-				throw new AccessViolationException ();
+				throw new IndexOutOfBoundsException ();
 			}
 			set {
 				if (index < elements.Count && index >= 0) {

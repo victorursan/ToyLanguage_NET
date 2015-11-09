@@ -27,9 +27,8 @@ namespace ToyLanguage_NET {
 			try {
 				return Convert.ToInt32 (readString (message));
 			} catch {
-				print ("That is not a number");
+				throw new UnexpectedTypeException ();
 			}
-			return 0;
 		}
 
 		private void oneStep () {
@@ -40,6 +39,12 @@ namespace ToyLanguage_NET {
 				currentProgram = null;
 			} catch (UninitializedVariableException) {
 				print ("A variable is not initialized");
+			} catch (NoSuchKeyException) {
+				print ("No such Variable");
+			} catch (DivisionByZeroException) {
+				print ("Division by zero");
+			} catch (EmptyRepositoryException) {
+				print ("No program state ");
 			}
 		}
 
@@ -51,6 +56,12 @@ namespace ToyLanguage_NET {
 				currentProgram = null;
 			} catch (UninitializedVariableException) {
 				print ("A variable is not initialized");
+			} catch (NoSuchKeyException) {
+				print ("No such Variable");
+			} catch (DivisionByZeroException) {
+				print ("Division by zero");
+			} catch (EmptyRepositoryException) {
+				print ("No program state ");
 			}
 		}
 
@@ -115,25 +126,30 @@ namespace ToyLanguage_NET {
 			print ("1. Arithmetical expression");
 			print ("2. Constant expression");
 			print ("3. Var expression");
-			Exp expr;
-			int opt = readInteger ("Option: ");
-			switch (opt) {
-				case 1:
-					expr = arithmeticalExpression ();
-					break;
-				case 2:
-					expr = constantExpression ();
-					break;
-				case 3:
-					expr = variableExpression ();
-					break;
-				default:
-					print ("Invalid option, please try again");
-					expr = inputExpression ();
-					break;
+			try {
+				Exp expr;
+				int opt = readInteger ("Option: ");
+				switch (opt) {
+					case 1:
+						expr = arithmeticalExpression ();
+						break;
+					case 2:
+						expr = constantExpression ();
+						break;
+					case 3:
+						expr = variableExpression ();
+						break;
+					default:
+						print ("Invalid option, please try again");
+						expr = inputExpression ();
+						break;
 
+				}
+				return expr;
+			} catch (UnexpectedTypeException) {
+				print ("Invalid option, please try again");
+				return inputExpression ();
 			}
-			return expr;
 		}
 
 		private CompStmt compoundStatement () {
@@ -172,35 +188,40 @@ namespace ToyLanguage_NET {
 			print ("2. Assignment statement");
 			print ("3. If statement");
 			print ("4. Print statement");
-			int opt = readInteger ("Option: ");
-			IStmt prg;
-			switch (opt) {
-				case 1:
-					prg = compoundStatement ();
-					break;
-				case 2:
-					prg = assignmentStatement ();
-					break;
-				case 3:
-					prg = ifStatement ();
-					break;
-				case 4:
-					prg = printStatement ();
-					break;
-				default:
-					print ("Invalid option, please try again");
-					prg = inputStatement ();
-					break;
+			try {
+				int opt = readInteger ("Option: ");
+				IStmt prg;
+				switch (opt) {
+					case 1:
+						prg = compoundStatement ();
+						break;
+					case 2:
+						prg = assignmentStatement ();
+						break;
+					case 3:
+						prg = ifStatement ();
+						break;
+					case 4:
+						prg = printStatement ();
+						break;
+					default:
+						print ("Invalid option, please try again");
+						prg = inputStatement ();
+						break;
+				}
+				return prg;
+			} catch (UnexpectedTypeException) {
+				print ("Invalid option, please try again");
+				return inputStatement ();
 			}
-			return prg;
 		}
 
 		private void inputProgram () {
-			IStmt prgStatement = new CompStmt(new AssignStmt("a", new ArithExp(new ConstExp(2), "-", new ConstExp(2))),new CompStmt(new IfStmt(new VarExp("a"),new AssignStmt("v",new ConstExp(2)), new AssignStmt("v", new ConstExp(3))), new PrintStmt(new VarExp("v"))));
+			IStmt prgStatement = new CompStmt (new AssignStmt ("a", new ArithExp (new ConstExp (2), "-", new ConstExp (2))), new CompStmt (new IfStmt (new VarExp ("a"), new AssignStmt ("v", new ConstExp (2)), new AssignStmt ("v", new ConstExp (3))), new PrintStmt (new VarExp ("v"))));
 			//new CompStmt(new AssignStmt("a", new ArithExp(new ConstExp(2), "-", new ConstExp(2))),new CompStmt(new IfStmt(new VarExp("a"),new AssignStmt("v",new ConstExp(2)), new AssignStmt("v", new ConstExp(3))), new PrintStmt(new VarExp("v"))));
 			currentProgram = new PrgState (new MyLibraryStack<IStmt> (), new MyLibraryDictionary<String, int> (), new MyLibraryList<int> (), prgStatement);
 			PrgState[] programs = { currentProgram };
-			currentProgram.printState ();
+			print (currentProgram.printState ());
 			ctrl = new Controller (new MyRepository (programs));
 		}
 
@@ -209,30 +230,36 @@ namespace ToyLanguage_NET {
 			print ("2. One Step");
 			print ("3. All Step");
 			print ("4. Set printFlag");
-			int opt = readInteger ("Option: ");
-
-			if (opt != 1 && currentProgram == null) {
-				print ("There is no program, please insert a program");
-			} else {
-				switch (opt) {
-					case 1:
-						inputProgram ();
-						break;
-					case 2:
-						oneStep ();
-						break;
-					case 3:
-						allStep ();
-						break;
-					case 4:
-						setPrintFlag ();
-						break;
-					default:
-						print ("Invalid option, please try again");
-						break;
+			try {
+				int opt = readInteger ("Option: ");
+				if (opt != 1 && currentProgram == null) {
+					print ("There is no program, please insert a program");
+				} else {
+					switch (opt) {
+						case 1:
+							inputProgram ();
+							break;
+						case 2:
+							oneStep ();
+							break;
+						case 3:
+							allStep ();
+							break;
+						case 4:
+							setPrintFlag ();
+							break;
+						default:
+							print ("Invalid option, please try again");
+							break;
+					}
 				}
+				firstMenu ();
+			} catch (UnexpectedTypeException) {
+				print ("Invalid option, please insert a number");
+				firstMenu ();
+			} catch (EmptyRepositoryException) {
+				print ("No program added");
 			}
-			firstMenu ();
 		}
 
 		public void run () {

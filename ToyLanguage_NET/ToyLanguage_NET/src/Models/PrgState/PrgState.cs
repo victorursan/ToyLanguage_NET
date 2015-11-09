@@ -28,16 +28,10 @@ namespace ToyLanguage_NET {
 			return output;
 		}
 
-		public void printState () {
+		public string printState () {
 //			StackInterface<IStmt> tmpStack = new MyLibraryStack<IStmt> ();
-			Console.WriteLine ("Exec Stack:");
-			Console.WriteLine (exeStack.ToString());
-			Console.WriteLine ("\nSymbol table");
-			Console.WriteLine (symTable);
-			Console.WriteLine ("\nOutput");
-			Console.WriteLine (output);
-			Console.WriteLine ("\n");
-
+			return "--------------------------------\n" + "Exec Stack:\n" + exeStack + "\n\nSymbol table\n" +
+				symTable + "\n\nOutput\n" + output + "\n\n" + "\n\n--------------------------------\n";
 		}
 	}
 }

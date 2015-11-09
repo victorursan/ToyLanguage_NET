@@ -45,7 +45,11 @@ namespace ToyLanguage_NET {
 			if (op == "+") return (e1.eval (tbl) + e2.eval (tbl));
 			if (op == "-") return (e1.eval (tbl) - e2.eval (tbl));
 			if (op == "*") return (e1.eval (tbl) * e2.eval (tbl));
-			if (op == "/") return (e1.eval (tbl) / e2.eval (tbl));
+			if (op == "/") {
+				if (e2.eval (tbl) == 0)
+					throw new DivisionByZeroException ();
+				return (e1.eval (tbl) / e2.eval (tbl));
+			}
 			return 0;
 		}
 

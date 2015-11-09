@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class UninitializedVariableException: Exception{
+	public class UninitializedVariableException: ModelException {
 		public UninitializedVariableException () {
 		}
 	}

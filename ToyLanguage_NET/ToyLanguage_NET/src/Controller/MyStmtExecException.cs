@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class MyStmtExecException: Exception {
+	public class MyStmtExecException: ControllerException {
 		public MyStmtExecException () {
 		}
 	}

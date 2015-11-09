@@ -57,6 +57,16 @@
     <Compile Include="src\Models\List\MyLibraryList.cs" />
     <Compile Include="src\Models\Map\MyLibraryDictionary.cs" />
     <Compile Include="src\Models\Stack\MyLibraryStack.cs" />
+    <Compile Include="src\Controller\ControllerException.cs" />
+    <Compile Include="src\Models\Expressions\DivisionByZeroException.cs" />
+    <Compile Include="src\Models\ModelException.cs" />
+    <Compile Include="src\Models\List\IndexOutOfBoundsException.cs" />
+    <Compile Include="src\Models\Map\NoSuchKeyException.cs" />
+    <Compile Include="src\Models\Stack\EmptyStackException.cs" />
+    <Compile Include="src\Repository\RepositoryException.cs" />
+    <Compile Include="src\Repository\EmptyRepositoryException.cs" />
+    <Compile Include="src\Views\ViewException.cs" />
+    <Compile Include="src\Views\UnexpectedTypeException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
