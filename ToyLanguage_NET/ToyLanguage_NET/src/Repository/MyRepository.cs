@@ -2,6 +2,7 @@
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using System.Text;
 
 namespace ToyLanguage_NET {
 	public class MyRepository: Repository {
@@ -36,13 +37,10 @@ namespace ToyLanguage_NET {
 		}
 
 		public void logPrgState() {
-//			try {
-//				FileChannel fc = new RandomAccessFile("prgState.txt", "rw").getChannel();
-//				fc.position(fc.size());
-//				fc.write(ByteBuffer.wrap(this.getCrtProgram().printState().getBytes()));
-//			} catch (IOException| EmptyRepositoryException  e) {
-//				System.out.println("no such file");
-//			}
+			using (StreamWriter w = File.AppendText("logProgramState.txt")) {
+				w.WriteLine(this.getCrtProgram().printState());
+			}
+
 		}
 			
 		public void serializePrgStatet () {
