@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace ToyLanguage_NET {
-	public class MyLibraryDictionary<K, V>: MapInterface<K, V> {
+	[Serializable] public class MyLibraryDictionary<K, V>: MapInterface<K, V> {
 		private Dictionary<K, V> elements;
 
 		public MyLibraryDictionary () {
@@ -58,7 +58,7 @@ namespace ToyLanguage_NET {
 		public override string ToString () {
 			string toString = "";
 			foreach (K key in elements.Keys) {
-				toString += key + "=" + elements [key] + "\n";
+				toString += key + " -> " + elements [key] + "\n";
 			}
 			return toString;
 		}

@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class CompStmt: IStmt {
+	[Serializable] public class CompStmt: IStmt {
 		private IStmt first;
 		private IStmt second;
 

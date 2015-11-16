@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class VarExp: Exp {
+	[Serializable] public class VarExp: Exp {
 		private String id;
 
 		public VarExp (String id) {

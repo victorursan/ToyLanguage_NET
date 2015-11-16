@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace ToyLanguage_NET {
-	public class MyLibraryStack<T>: StackInterface<T> { 
+	[Serializable] public class MyLibraryStack<T>: StackInterface<T> { 
 		private Stack<T> elements;
 
 		public MyLibraryStack () {

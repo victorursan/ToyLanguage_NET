@@ -67,6 +67,17 @@
     <Compile Include="src\Repository\EmptyRepositoryException.cs" />
     <Compile Include="src\Views\ViewException.cs" />
     <Compile Include="src\Views\UnexpectedTypeException.cs" />
+    <Compile Include="src\Models\Expressions\NotExp.cs" />
+    <Compile Include="src\Models\Expressions\ReadExp.cs" />
+    <Compile Include="src\Models\Expressions\LogicalExp.cs" />
+    <Compile Include="src\Models\Expressions\RelationalExp.cs" />
+    <Compile Include="src\Models\Statements\IfThenStmt.cs" />
+    <Compile Include="src\Models\Statements\SkipStmt.cs" />
+    <Compile Include="src\Models\Statements\SwitchStmt.cs" />
+    <Compile Include="src\Models\Statements\WhileStmt.cs" />
+    <Compile Include="src\Models\Stack\MyArrayStack.cs" />
+    <Compile Include="src\Models\Map\MyArrayDictionary.cs" />
+    <Compile Include="src\Models\List\MyArrayList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

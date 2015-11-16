@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ArithExp: Exp {
+	[Serializable] public class ArithExp: Exp {
 		private Exp e1;
 		private Exp e2;
 		private String op;

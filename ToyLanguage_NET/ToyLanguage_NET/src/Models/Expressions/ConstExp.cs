@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class ConstExp: Exp {
+	[Serializable] public class ConstExp: Exp {
 		private int number;
 
 		public ConstExp(int number) {

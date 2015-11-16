@@ -2,7 +2,13 @@
 
 namespace ToyLanguage_NET {
 	public interface Repository {
-		PrgState getCrtProgram();
+		PrgState getCrtProgram ();
+
+		void serializePrgStatet ();
+
+		void logPrgState ();
+
+		void deserializePrgStatet ();
 	}
 }
 

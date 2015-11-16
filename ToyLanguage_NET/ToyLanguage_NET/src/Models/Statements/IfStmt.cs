@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class IfStmt: IStmt {
+	[Serializable] public class IfStmt: IStmt {
 		private Exp exp;
 		private IStmt thenS;
 		private IStmt elseS;

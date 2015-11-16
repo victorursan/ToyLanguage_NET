@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace ToyLanguage_NET {
-	public interface MapInterface<K, V> {
+	 public interface MapInterface<K, V> {
 		int Count { get; }
 
 		Dictionary<K, V>.KeyCollection Keys { get; }

@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class PrgState {
+	[Serializable] public class PrgState {
 		private StackInterface<IStmt> exeStack;
 		private MapInterface<String, int> symTable;
 		private ListInterface<int> output;

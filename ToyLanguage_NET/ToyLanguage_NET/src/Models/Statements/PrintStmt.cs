@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class PrintStmt: IStmt {
+	[Serializable] public class PrintStmt: IStmt {
 		private Exp exp;
 
 		public PrintStmt (Exp expression) {

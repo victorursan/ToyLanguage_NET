@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public class AssignStmt : IStmt {
+	[Serializable] public class AssignStmt : IStmt {
 		private String id;
 		private Exp exp;
 

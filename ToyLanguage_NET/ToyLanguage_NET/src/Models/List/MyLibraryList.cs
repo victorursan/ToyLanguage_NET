@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 namespace ToyLanguage_NET {
-	public class MyLibraryList<T>: ListInterface<T> {
+	[Serializable] public class MyLibraryList<T>: ListInterface<T> {
 		private List<T> elements;
 
 		public MyLibraryList () {
@@ -54,7 +54,7 @@ namespace ToyLanguage_NET {
 		#endregion
 
 		public override string ToString () {
-			return " [" + string.Join(", ", elements) + " ]";
+			return "" + string.Join("\n ", elements) + "";
 		}
 	}
 }

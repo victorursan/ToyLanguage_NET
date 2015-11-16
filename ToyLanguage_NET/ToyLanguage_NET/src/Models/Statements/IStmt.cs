@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	public interface IStmt {
+	 public interface IStmt {
 //		String toStr ();
 	}
 }
