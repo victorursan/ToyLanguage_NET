@@ -34,7 +34,7 @@ namespace ToyLanguage_NET {
 		private void oneStep () {
 			try {
 				ctrl.oneStep ();
-				ctrl.serializeProgramState ();
+//				ctrl.serializeProgramState ();
 			} catch (MyStmtExecException) {
 				print ("Finished");
 				currentProgram = null;
@@ -52,7 +52,7 @@ namespace ToyLanguage_NET {
 		private void allStep () {
 			try {
 				ctrl.allStep ();
-				ctrl.serializeProgramState ();
+//				ctrl.serializeProgramState ();
 			} catch (MyStmtExecException) {
 				print ("Finished");
 				currentProgram = null;
