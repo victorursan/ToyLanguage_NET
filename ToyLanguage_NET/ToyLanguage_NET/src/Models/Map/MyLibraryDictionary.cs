@@ -39,8 +39,6 @@ namespace ToyLanguage_NET {
 				return elements [key];
 			}
 			set {
-				if (!ContainsKey (key))
-					throw new NoSuchKeyException ();
 				elements [key] = value;
 			}
 		}

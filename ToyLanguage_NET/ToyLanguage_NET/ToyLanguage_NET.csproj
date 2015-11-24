@@ -84,6 +84,7 @@
     <Compile Include="src\Models\Heap\HashIndexOutOfBoundsException.cs" />
     <Compile Include="src\Models\Expressions\ReadHeapExp.cs" />
     <Compile Include="src\Models\Statements\WriteHeapStmt.cs" />
+    <Compile Include="src\Models\Statements\NewStmt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

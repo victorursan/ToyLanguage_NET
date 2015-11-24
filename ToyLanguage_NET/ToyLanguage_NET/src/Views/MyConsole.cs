@@ -357,7 +357,8 @@ namespace ToyLanguage_NET {
 		}
 
 		private void inputProgram () {
-			IStmt prgStatement = new CompStmt (new AssignStmt ("a", new ArithExp (new ConstExp (2), "-", new ConstExp (3))), new CompStmt (new IfThenStmt (new VarExp ("a"), new AssignStmt ("v", new ConstExp (2))), new PrintStmt (new VarExp ("v"))));
+			IStmt prgStatement = new CompStmt(new NewStmt("a", new ConstExp(10)), new CompStmt(new WriteHeapStmt("a", new ConstExp(4)),  new CompStmt(new AssignStmt("b", new ConstExp(1)), new PrintStmt(new ReadHeapExp("b")))));
+				//new CompStmt (new AssignStmt ("a", new ArithExp (new ConstExp (2), "-", new ConstExp (3))), new CompStmt (new IfThenStmt (new VarExp ("a"), new AssignStmt ("v", new ConstExp (2))), new PrintStmt (new VarExp ("v"))));
 			//inputStatement ();
 	
 			ListInterface<PrgState> programs = new MyLibraryList<PrgState> ();

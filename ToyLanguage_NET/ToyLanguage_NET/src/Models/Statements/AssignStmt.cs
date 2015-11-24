@@ -38,11 +38,7 @@ namespace ToyLanguage_NET {
 			MapInterface<String, int> symTbl = state.SymTable;
 			HeapInterface<int> heap = state.HeapTable;
 			int val = exp.eval (symTbl, heap);
-			if (symTbl.ContainsKey (id)) {
-				symTbl [id] = val;
-			} else {
-				symTbl.Add (id, val);
-			}
+			symTbl [id] = val;
 			return state;
 		}
 
