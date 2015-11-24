@@ -2,7 +2,9 @@
 
 namespace ToyLanguage_NET {
 	public interface Exp {
-		int eval (MapInterface<String, int> tbl);
+		string ToString ();
+
+		int eval (MapInterface<String, int> tbl, HeapInterface<int> heap);
 	}
 }
 

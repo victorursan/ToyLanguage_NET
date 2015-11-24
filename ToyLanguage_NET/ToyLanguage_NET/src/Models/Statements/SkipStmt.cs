@@ -5,9 +5,17 @@ namespace ToyLanguage_NET {
 		public SkipStmt () {
 		}
 
-		public override string ToString() {
+		#region IStmt implementation
+
+		public override string ToString () {
 			return " SKIP ";
 		}
+
+		public PrgState execute (PrgState state) {
+			return state;
+		}
+
+		#endregion
 	}
 }
 

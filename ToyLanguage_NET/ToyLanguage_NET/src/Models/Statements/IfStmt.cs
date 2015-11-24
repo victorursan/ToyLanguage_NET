@@ -38,11 +38,25 @@ namespace ToyLanguage_NET {
 			thenS = t;
 			elseS = el;
 		}
-			
+
+		#region IStmt implementation
 
 		public override string ToString () {
 			return "IF( " + exp.ToString () + " )THEN( " + thenS.ToString () + " )ELSE( " + elseS.ToString () + " )";
 		}
+
+		public PrgState execute (PrgState state) {
+			MapInterface<String, int> symTbl = state.SymTable;
+			HeapInterface<int> heap = state.HeapTable;
+			if (Exp.eval (symTbl, heap) != 0) {
+				state.ExeStack.Push (ThenS);
+			} else {
+				state.ExeStack.Push (ElseS);
+			}
+			return state;
+		}
+
+		#endregion
 			
 	}
 }

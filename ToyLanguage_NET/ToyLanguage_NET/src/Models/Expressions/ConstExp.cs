@@ -4,7 +4,7 @@ namespace ToyLanguage_NET {
 	[Serializable] public class ConstExp: Exp {
 		private int number;
 
-		public ConstExp(int number) {
+		public ConstExp (int number) {
 			this.number = number;
 		}
 
@@ -16,10 +16,10 @@ namespace ToyLanguage_NET {
 				number = value;
 			}
 		}
-			
+
 		#region Exp implementation
 
-		public int eval(MapInterface<String, int> tbl) {
+		public int eval (MapInterface<String, int> tbl, HeapInterface<int> heap) {
 			return number;
 		}
 

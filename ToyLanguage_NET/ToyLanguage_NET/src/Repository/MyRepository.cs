@@ -38,7 +38,7 @@ namespace ToyLanguage_NET {
 
 		public void logPrgState() {
 			using (StreamWriter w = File.AppendText("logProgramState.txt")) {
-				w.WriteLine(this.getCrtProgram().printState());
+				w.WriteLine(this.getCrtProgram().PrintState());
 			}
 
 		}

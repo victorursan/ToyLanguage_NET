@@ -5,30 +5,41 @@ namespace ToyLanguage_NET {
 		private Exp exp;
 		private IStmt thenS;
 
-		public Exp getExp() {
-			return exp;
+		public Exp Exp {
+			get {
+				return exp;
+			}
+			set {
+				exp = value;
+			}
 		}
 
-		public IStmt getThenS() {
-			return thenS;
+		public IStmt ThenS {
+			get {
+				return thenS;
+			}
+			set {
+				thenS = value;
+			}
 		}
 
-		public void setExp(Exp exp) {
-			this.exp = exp;
-		}
-
-		public void setThenS(IStmt thenS) {
-			this.thenS = thenS;
-		}
-
-		public IfThenStmt(Exp e, IStmt t) {
+		public IfThenStmt (Exp e, IStmt t) {
 			exp = e;
 			thenS = t;
 		}
-			
-		public override string ToString() {
-			return "IF(" + exp.ToString() + ")THEN(" + thenS.ToString() + ")";
+
+		#region IStmt implementation
+
+		public override string ToString () {
+			return "IF(" + exp.ToString () + ")THEN(" + thenS.ToString () + ")";
 		}
+
+		public PrgState execute (PrgState state) {
+			state.ExeStack.Push (new IfStmt (Exp, ThenS, new SkipStmt ()));
+			return state;
+		}
+
+		#endregion
 	}
 }
 

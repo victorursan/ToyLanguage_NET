@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="monodoc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -78,6 +79,11 @@
     <Compile Include="src\Models\Stack\MyArrayStack.cs" />
     <Compile Include="src\Models\Map\MyArrayDictionary.cs" />
     <Compile Include="src\Models\List\MyArrayList.cs" />
+    <Compile Include="src\Models\Heap\HeapInterface.cs" />
+    <Compile Include="src\Models\Heap\MyLibraryHeap.cs" />
+    <Compile Include="src\Models\Heap\HashIndexOutOfBoundsException.cs" />
+    <Compile Include="src\Models\Expressions\ReadHeapExp.cs" />
+    <Compile Include="src\Models\Statements\WriteHeapStmt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -89,5 +95,6 @@
     <Folder Include="src\Models\PrgState\" />
     <Folder Include="src\Controller\" />
     <Folder Include="src\Views\" />
+    <Folder Include="src\Models\Heap\" />
   </ItemGroup>
 </Project>

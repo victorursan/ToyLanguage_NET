@@ -28,10 +28,25 @@ namespace ToyLanguage_NET {
 			this.exp = exp;
 		}
 
+		#region IStmt implementation
 
 		public override string ToString () {
-			return id.ToString() + " = " + exp.ToString();
+			return id.ToString () + " = " + exp.ToString ();
 		}
+
+		public PrgState execute (PrgState state) {
+			MapInterface<String, int> symTbl = state.SymTable;
+			HeapInterface<int> heap = state.HeapTable;
+			int val = exp.eval (symTbl, heap);
+			if (symTbl.ContainsKey (id)) {
+				symTbl [id] = val;
+			} else {
+				symTbl.Add (id, val);
+			}
+			return state;
+		}
+
+		#endregion
 
 	}
 }

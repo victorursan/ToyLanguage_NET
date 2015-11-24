@@ -33,7 +33,7 @@ namespace ToyLanguage_NET {
 
 		private void oneStep () {
 			try {
-				ctrl.oneStep ();
+				ctrl.oneStep (currentProgram);
 //				ctrl.serializeProgramState ();
 			} catch (MyStmtExecException) {
 				print ("Finished");
@@ -51,7 +51,7 @@ namespace ToyLanguage_NET {
 
 		private void allStep () {
 			try {
-				ctrl.allStep ();
+				ctrl.allStep (currentProgram);
 //				ctrl.serializeProgramState ();
 			} catch (MyStmtExecException) {
 				print ("Finished");
@@ -361,11 +361,11 @@ namespace ToyLanguage_NET {
 			//inputStatement ();
 	
 			ListInterface<PrgState> programs = new MyLibraryList<PrgState> ();
-			programs.Add (new PrgState (new MyLibraryStack<IStmt> (), new MyLibraryDictionary<String, int> (), new MyLibraryList<int> (), prgStatement));
+			programs.Add (new PrgState (new MyLibraryStack<IStmt> (), new MyLibraryDictionary<String, int> (), new MyLibraryHeap<int> (), new MyLibraryList<int> (), prgStatement));
 			ctrl = new Controller (new MyRepository (programs));
 			ctrl.serializeProgramState ();
 			currentProgram = ctrl.CrtPrgState;
-			print (currentProgram.printState ());
+			print (currentProgram.PrintState ());
 
 		}
 
@@ -374,7 +374,7 @@ namespace ToyLanguage_NET {
 			repo.deserializePrgStatet ();
 			ctrl = new Controller(repo);
 			currentProgram = ctrl.CrtPrgState;
-			print (currentProgram.printState ());
+			print (currentProgram.PrintState ());
 		}
 
 		private void firstMenu () {

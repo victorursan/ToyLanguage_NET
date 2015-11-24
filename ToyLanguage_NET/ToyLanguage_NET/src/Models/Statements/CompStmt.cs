@@ -34,7 +34,14 @@ namespace ToyLanguage_NET {
 			return "(" + first.ToString () + "; " + second.ToString () + ")";
 		}
 
+		public PrgState execute (PrgState state) {
+			state.ExeStack.Push (second);
+			state.ExeStack.Push (first);
+			return state;
+		}
+
 		#endregion
+
 	}
 }
 

@@ -9,7 +9,7 @@ namespace ToyLanguage_NET {
 		private IStmt case2;
 		private IStmt defaultCase;
 
-		public SwitchStmt(Exp exp, Exp opCase1, IStmt case1, Exp opCase2, IStmt case2, IStmt defaultCase) {
+		public SwitchStmt (Exp exp, Exp opCase1, IStmt case1, Exp opCase2, IStmt case2, IStmt defaultCase) {
 			this.exp = exp;
 			this.expCase1 = opCase1;
 			this.case1 = case1;
@@ -18,34 +18,59 @@ namespace ToyLanguage_NET {
 			this.defaultCase = defaultCase;
 		}
 
-		public Exp getExp() {
-			return exp;
+		public Exp Exp {
+			get {
+				return exp;
+			}
 		}
 
-		public Exp getExpCase1() {
-			return expCase1;
+		public Exp ExpCase1 {
+			get {
+				return expCase1;
+			}
 		}
 
-		public IStmt getCase1() {
-			return case1;
+		public IStmt Case1 {
+			get {
+				return case1;
+			}
 		}
 
-		public IStmt getCase2() {
-			return case2;
+		public Exp ExpCase2 {
+			get {
+				return expCase2;
+			}
 		}
 
-		public Exp getExpCase2() {
-			return expCase2;
+		public IStmt Case2 {
+			get {
+				return case2;
+			}
 		}
 
-		public IStmt getDefaultCase() {
-			return defaultCase;
+		public IStmt DefaultCase {
+			get {
+				return defaultCase;
+			}
 		}
 
-		public override string ToString() {
-			return "SWITCH(" + exp.ToString() + ") " + " case " + expCase1.ToString() + ": " + case1.ToString()
-				+ " case " + expCase2.ToString() + ": " + case2.ToString() + " default: " + defaultCase.ToString();
+		#region IStmt implementation
+
+		public override string ToString () {
+			return "SWITCH(" + exp.ToString () + ") " + " case " + expCase1.ToString () + ": " + case1.ToString ()
+			+ " case " + expCase2.ToString () + ": " + case2.ToString () + " default: " + defaultCase.ToString ();
 		}
+
+		public PrgState execute (PrgState state) {
+			Exp difSwitch = new ArithExp (Exp, "-", ExpCase2);
+			Exp difSwitch2 = new ArithExp (Exp, "-", ExpCase1);
+			IStmt ifSwitch = new IfStmt (difSwitch2, DefaultCase, Case1);
+			IStmt switchStmt = new IfStmt (difSwitch, ifSwitch, Case2);
+			state.ExeStack.Push (switchStmt);
+			return state;
+		}
+
+		#endregion
 	}
 }
 

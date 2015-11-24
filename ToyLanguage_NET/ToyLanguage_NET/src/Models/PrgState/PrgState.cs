@@ -2,36 +2,54 @@
 
 namespace ToyLanguage_NET {
 	[Serializable] public class PrgState {
+		private static int generator = 0;
+		private int id;
 		private StackInterface<IStmt> exeStack;
 		private MapInterface<String, int> symTable;
+		private HeapInterface<int> heapTable;
 		private ListInterface<int> output;
 		private IStmt originalProgram;
 		//optional field, but good to have
 
-		public PrgState (StackInterface<IStmt> stack, MapInterface<String, int> dictionary, ListInterface<int> list, IStmt prg) {
+		public PrgState (StackInterface<IStmt> stack, MapInterface<String, int> dictionary, HeapInterface<int> heap, ListInterface<int> list, IStmt prg) {
+			id = generator++;
 			exeStack = stack;
 			symTable = dictionary;
+			heapTable = heap;
 			output = list;
 			originalProgram = prg;
 			exeStack.Push (originalProgram);
 		}
-
-		public StackInterface<IStmt> getExeStack () {
-			return exeStack;
+			
+		public StackInterface<IStmt> ExeStack {
+			get {
+				return exeStack;
+			}
 		}
 
-		public MapInterface<String, int> getSymTable () {
-			return symTable;
+		public MapInterface<String, int> SymTable {
+			get {
+				return symTable;
+			}
 		}
 
-		public ListInterface<int> getOut () {
-			return output;
+		public HeapInterface<int> HeapTable {
+			get {
+				return heapTable;
+			}
 		}
 
-		public string printState () {
-//			StackInterface<IStmt> tmpStack = new MyLibraryStack<IStmt> ();
-			return "--------------------------------\n" + "Exec Stack:\n" + exeStack + "\n\nSymbol table\n" +
-				symTable + "\n\nOutput\n" + output + "\n\n" + "\n\n--------------------------------\n";
+		public ListInterface<int> Output {
+			get {
+				return output;
+			}
+		}
+			
+		public string PrintState () {
+			return "--------------------------------\n" + "id: " + id +
+				"\nExec Stack:\n" + exeStack.ToString() +
+				"\nSymbol table\n" + symTable.ToString() + "\nHeap table\n" + heapTable.ToString() +
+				"\n\nOutput List\n" + output.ToString() + "\n\n--------------------------------\n";
 		}
 	}
 }

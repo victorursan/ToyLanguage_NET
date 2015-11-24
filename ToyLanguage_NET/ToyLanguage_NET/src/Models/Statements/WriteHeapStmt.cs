@@ -1,11 +1,22 @@
 ﻿using System;
 
 namespace ToyLanguage_NET {
-	[Serializable] public class PrintStmt: IStmt {
+	[Serializable] public class WriteHeapStmt: IStmt {
+		private String id;
 		private Exp exp;
 
-		public PrintStmt (Exp expression) {
-			exp = expression;
+		public WriteHeapStmt (String id, Exp exp) {
+			this.id = id;
+			this.exp = exp;
+		}
+
+		public String Id {
+			get {
+				return id;
+			}
+			set {
+				id = value;
+			}
 		}
 
 		public Exp Exp {
@@ -20,14 +31,13 @@ namespace ToyLanguage_NET {
 		#region IStmt implementation
 
 		public override string ToString () {
-			return "print( " + exp.ToString () + " )";
+			return "writeHeap( " + id + ", " + exp.ToString () + ")";
 		}
 
 		public PrgState execute (PrgState state) {
-			ListInterface<int> output = state.Output;
 			MapInterface<String, int> symTbl = state.SymTable;
 			HeapInterface<int> heap = state.HeapTable;
-			output.Add (Exp.eval (symTbl, heap));
+			heap.Update (symTbl [Id], Exp.eval (symTbl, heap));
 			return state;
 		}
 

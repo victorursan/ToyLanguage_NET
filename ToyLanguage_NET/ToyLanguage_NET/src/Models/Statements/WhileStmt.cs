@@ -5,30 +5,46 @@ namespace ToyLanguage_NET {
 		private Exp exp;
 		private IStmt stmt;
 
-		public WhileStmt(Exp e, IStmt stmt) {
+		public WhileStmt (Exp e, IStmt stmt) {
 			this.exp = e;
 			this.stmt = stmt;
 		}
 
-		public Exp getExp() {
-			return exp;
+		public Exp Exp {
+			get {
+				return exp;
+			}
+			set {
+				exp = value;
+			}
 		}
 
-		public IStmt getStmt() {
-			return stmt;
+		public IStmt Stmt {
+			get {
+				return stmt;
+			}
+			set {
+				stmt = value;
+			}
 		}
 
-		public void settExp(Exp exp) {
-			this.exp = exp;
+		#region IStmt implementation
+
+		public override string ToString () {
+			return "While( " + exp.ToString () + ") { " + stmt.ToString () + " }";
 		}
 
-		public void setStmt(IStmt stmt) {
-			this.stmt = stmt;
+		public PrgState execute (PrgState state) {
+			MapInterface<String, int> symTbl = state.SymTable;
+			HeapInterface<int> heap = state.HeapTable;
+			if (Exp.eval (symTbl, heap) != 0) {
+				state.ExeStack.Push (this);
+				state.ExeStack.Push (this.Stmt);
+			}
+			return state;
 		}
 
-		public override string ToString() {
-			return "While( " + exp.ToString() + ") { " + stmt.ToString() + " }";
-		}
+		#endregion
 	}
 }
 

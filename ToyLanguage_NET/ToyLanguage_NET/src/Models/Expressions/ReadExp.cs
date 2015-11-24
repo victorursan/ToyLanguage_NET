@@ -24,18 +24,18 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		public ReadExp() {
+		public ReadExp () {
 		}
-			
-		public int eval(MapInterface<String, int> tbl) {
+
+		public int eval (MapInterface<String, int> tbl, HeapInterface<int> heap) {
 			try {
-				return readInteger("");
+				return readInteger ("");
 			} catch (UnexpectedTypeException) {
-				return eval(tbl);
+				return eval (tbl, heap);
 			}
 		}
-			
-		public override string ToString() {
+
+		public override string ToString () {
 			return "read()";
 		}
 	}

@@ -41,14 +41,17 @@ namespace ToyLanguage_NET {
 
 		#region Exp implementation
 
-		public int eval (MapInterface<String, int> tbl) {
-			if (op == "+") return (e1.eval (tbl) + e2.eval (tbl));
-			if (op == "-") return (e1.eval (tbl) - e2.eval (tbl));
-			if (op == "*") return (e1.eval (tbl) * e2.eval (tbl));
+		public int eval (MapInterface<String, int> tbl, HeapInterface<int> heap) {
+			if (op == "+")
+				return (e1.eval (tbl, heap) + e2.eval (tbl, heap));
+			if (op == "-")
+				return (e1.eval (tbl, heap) - e2.eval (tbl, heap));
+			if (op == "*")
+				return (e1.eval (tbl, heap) * e2.eval (tbl, heap));
 			if (op == "/") {
-				if (e2.eval (tbl) == 0)
+				if (e2.eval (tbl, heap) == 0)
 					throw new DivisionByZeroException ();
-				return (e1.eval (tbl) / e2.eval (tbl));
+				return (e1.eval (tbl, heap) / e2.eval (tbl, heap));
 			}
 			return 0;
 		}
