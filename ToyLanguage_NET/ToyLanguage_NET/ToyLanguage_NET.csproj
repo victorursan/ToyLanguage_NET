@@ -43,7 +43,6 @@
     <Compile Include="src\Models\Statements\IStmt.cs" />
     <Compile Include="src\Models\Expressions\ArithExp.cs" />
     <Compile Include="src\Models\Expressions\ConstExp.cs" />
-    <Compile Include="src\Models\Expressions\UninitializedVariableException.cs" />
     <Compile Include="src\Models\Expressions\VarExp.cs" />
     <Compile Include="src\Models\Statements\AssignStmt.cs" />
     <Compile Include="src\Models\Statements\CompStmt.cs" />
@@ -53,20 +52,11 @@
     <Compile Include="src\Models\PrgState\PrgState.cs" />
     <Compile Include="src\Repository\MyRepository.cs" />
     <Compile Include="src\Controller\Controller.cs" />
-    <Compile Include="src\Controller\MyStmtExecException.cs" />
     <Compile Include="src\Views\MyConsole.cs" />
     <Compile Include="src\Models\List\MyLibraryList.cs" />
     <Compile Include="src\Models\Map\MyLibraryDictionary.cs" />
     <Compile Include="src\Models\Stack\MyLibraryStack.cs" />
-    <Compile Include="src\Controller\ControllerException.cs" />
-    <Compile Include="src\Models\Expressions\DivisionByZeroException.cs" />
     <Compile Include="src\Models\ModelException.cs" />
-    <Compile Include="src\Models\List\IndexOutOfBoundsException.cs" />
-    <Compile Include="src\Models\Map\NoSuchKeyException.cs" />
-    <Compile Include="src\Models\Stack\EmptyStackException.cs" />
-    <Compile Include="src\Repository\RepositoryException.cs" />
-    <Compile Include="src\Repository\EmptyRepositoryException.cs" />
-    <Compile Include="src\Views\ViewException.cs" />
     <Compile Include="src\Views\UnexpectedTypeException.cs" />
     <Compile Include="src\Models\Expressions\NotExp.cs" />
     <Compile Include="src\Models\Expressions\ReadExp.cs" />
@@ -81,10 +71,20 @@
     <Compile Include="src\Models\List\MyArrayList.cs" />
     <Compile Include="src\Models\Heap\HeapInterface.cs" />
     <Compile Include="src\Models\Heap\MyLibraryHeap.cs" />
-    <Compile Include="src\Models\Heap\HashIndexOutOfBoundsException.cs" />
     <Compile Include="src\Models\Expressions\ReadHeapExp.cs" />
     <Compile Include="src\Models\Statements\WriteHeapStmt.cs" />
     <Compile Include="src\Models\Statements\NewStmt.cs" />
+    <Compile Include="src\Controller\Exception\ControllerException.cs" />
+    <Compile Include="src\Controller\Exception\MyStmtExecException.cs" />
+    <Compile Include="src\Models\Expressions\Exception\DivisionByZeroException.cs" />
+    <Compile Include="src\Models\Expressions\Exception\UninitializedVariableException.cs" />
+    <Compile Include="src\Models\Heap\Exception\HashIndexOutOfBoundsException.cs" />
+    <Compile Include="src\Models\List\Exception\IndexOutOfBoundsException.cs" />
+    <Compile Include="src\Models\Map\Exception\NoSuchKeyException.cs" />
+    <Compile Include="src\Models\Stack\Exception\EmptyStackException.cs" />
+    <Compile Include="src\Repository\Exception\EmptyRepositoryException.cs" />
+    <Compile Include="src\Repository\Exception\RepositoryException.cs" />
+    <Compile Include="src\Views\Exception\ViewException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -97,5 +97,13 @@
     <Folder Include="src\Controller\" />
     <Folder Include="src\Views\" />
     <Folder Include="src\Models\Heap\" />
+    <Folder Include="src\Controller\Exception\" />
+    <Folder Include="src\Models\Expressions\Exception\" />
+    <Folder Include="src\Models\Heap\Exception\" />
+    <Folder Include="src\Models\List\Exception\" />
+    <Folder Include="src\Models\Map\Exception\" />
+    <Folder Include="src\Models\Stack\Exception\" />
+    <Folder Include="src\Repository\Exception\" />
+    <Folder Include="src\Views\Exception\" />
   </ItemGroup>
 </Project>
