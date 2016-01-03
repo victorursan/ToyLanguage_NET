@@ -1,17 +1,15 @@
 ﻿using System;
 
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 namespace ToyLanguage_NET {
 	public class Controller {
 		private Repository repo;
-//		private PrgState crtPrgState;
+		//		private PrgState crtPrgState;
 		private bool printFlag;
 		private bool logFlag;
-
-		public PrgState CrtPrgState {
-			get {
-				return repo.getCrtProgram ();
-			}
-		}
 
 		public bool PrintFlag {
 			get {
@@ -43,25 +41,47 @@ namespace ToyLanguage_NET {
 			repo.serializePrgStatet ();
 		}
 
-		public PrgState oneStep (PrgState state) {
-			StackInterface<IStmt> stk = state.ExeStack;
+		public List<PrgState> removeCompletedPrg (List<PrgState> inPrgList) {
+			return inPrgList.Where (p => p.isNotCompleted ()).ToList ();
+		}
+
+		private void oneStepForAllPrg (List<PrgState> prgList) {
+
+			List<Task<PrgState>> taskList = (from prg in prgList
+			                                 select Task<PrgState>.Factory.StartNew (() => prg.oneStep ())).ToList ();
+		
+			try {
+			List<PrgState> newPrgList =  (from tsk in taskList
+			                             where tsk.Result != null
+			                             select tsk.Result).ToList ();
+			newPrgList.AddRange (prgList.Where (p => !newPrgList.Any (q => q.Id == p.Id)).ToList ());
 			if (printFlag) {
-				Console.WriteLine (state.PrintState ());
+				newPrgList.ForEach (p => Console.Write (p));
 			}
 			if (logFlag) {
 				repo.logPrgState ();
 			}
-			try {
-				IStmt crtStmt = stk.Pop ();
-				return crtStmt.execute (state);
-			} catch (EmptyStackException) {
-				throw new MyStmtExecException ();
+			repo.PrgStates = newPrgList;
+			} catch (Exception e) {
+				Console.Write ("something" + e.StackTrace);
 			}
+
 		}
 
-		public void allStep (PrgState state) {
-			while (true) { //(crtPrgState.getExeStack ().Count > 0) {
-				oneStep (state);
+		public void oneStep () {
+			List<PrgState> prgList = removeCompletedPrg (repo.PrgStates);
+			oneStepForAllPrg (prgList);
+		}
+
+		public void allStep () {
+			while (true) {
+				List<PrgState> prgList = removeCompletedPrg (repo.PrgStates);
+				if (prgList.Count () == 0) {
+					return;
+				} else {
+					oneStepForAllPrg (prgList);
+				}
+
 			}
 		}
 

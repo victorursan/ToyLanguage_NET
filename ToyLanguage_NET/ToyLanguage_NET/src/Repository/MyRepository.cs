@@ -3,21 +3,22 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace ToyLanguage_NET {
 	public class MyRepository: Repository {
-		private ListInterface<PrgState> prgStates;
+		private List<PrgState> prgStates;
 
-		public MyRepository (ListInterface<PrgState> prgStates) {
+		public MyRepository (List<PrgState> prgStates) {
 			this.prgStates = prgStates;
 		}
 
 		public MyRepository () {
-			this.prgStates = new MyLibraryList<PrgState>();
+			this.prgStates = new List<PrgState>();
 		}
 
 
-		public ListInterface<PrgState> PrgStates {
+		public List<PrgState> PrgStates {
 			get {
 				return prgStates;
 			}
@@ -26,23 +27,12 @@ namespace ToyLanguage_NET {
 			}
 		}
 
-		public PrgState getCrtProgram () {
-			try {
-				if (prgStates.Count > 0)
-					return this.prgStates [0];
-			} catch (IndexOutOfBoundsException) {
-				throw new EmptyRepositoryException ();
-			}
-			throw new EmptyRepositoryException ();
-		}
-
 		public void logPrgState() {
 			using (StreamWriter w = File.AppendText("logProgramState.txt")) {
-				w.WriteLine(this.getCrtProgram().PrintState());
+				w.WriteLine(this.prgStates.ToString());
 			}
 
 		}
-			
 		public void serializePrgStatet () {
 			IFormatter formatter = new BinaryFormatter(  );
 			using (FileStream s = File.Create ("serialized.bin")) {
@@ -53,7 +43,7 @@ namespace ToyLanguage_NET {
 		public void deserializePrgStatet () {
 			IFormatter formatter = new BinaryFormatter(  );
 			using (FileStream s = File.OpenRead ("serialized.bin")) {
-				this.prgStates = (ListInterface<PrgState>) formatter.Deserialize (s);
+				this.prgStates = (List<PrgState>) formatter.Deserialize (s);
 			}
 		}
 	}

@@ -85,6 +85,7 @@
     <Compile Include="src\Repository\Exception\EmptyRepositoryException.cs" />
     <Compile Include="src\Repository\Exception\RepositoryException.cs" />
     <Compile Include="src\Views\Exception\ViewException.cs" />
+    <Compile Include="src\Models\Statements\ForkStmt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

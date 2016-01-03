@@ -44,7 +44,36 @@ namespace ToyLanguage_NET {
 				return output;
 			}
 		}
+
+		public int Id {
+			get {
+				return id;
+			}
+			set {
+				id = value;
+			}
+		}
+
+		public bool isNotCompleted() {
+			return exeStack.Count != 0;
+		}
 			
+		public PrgState oneStep() {
+			try {
+				IStmt crtStmt = exeStack.Pop();
+				return crtStmt.execute(this);
+			} catch (EmptyStackException) {
+				throw new MyStmtExecException();
+			}
+		}
+
+		public override string ToString () {
+			return "--------------------------------\n" + "id: " + id +
+				"\nExec Stack:\n" + exeStack.ToString() +
+				"\nSymbol table\n" + symTable.ToString() + "\nHeap table\n" + heapTable.ToString() +
+				"\n\nOutput List\n" + output.ToString() + "\n\n--------------------------------\n";
+		}
+
 		public string PrintState () {
 			return "--------------------------------\n" + "id: " + id +
 				"\nExec Stack:\n" + exeStack.ToString() +

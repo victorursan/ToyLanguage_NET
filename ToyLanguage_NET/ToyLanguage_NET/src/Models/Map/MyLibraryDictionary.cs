@@ -8,8 +8,13 @@ namespace ToyLanguage_NET {
 
 		public MyLibraryDictionary () {
 			elements = new Dictionary<K, V> ();
+
 		}
 
+		public MyLibraryDictionary (MyLibraryDictionary<K, V> tmp) {
+			elements = new Dictionary<K, V> (tmp.elements);
+
+		}
 		#region MapInterface implementation
 
 		public void Add (K key, V value) {

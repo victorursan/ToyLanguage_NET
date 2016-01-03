@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace ToyLanguage_NET {
 	public class MyConsole {
 		private Controller ctrl;
-		private PrgState currentProgram;
+//		private PrgState currentProgram;
 
 		public MyConsole () {
 		}
@@ -33,11 +33,11 @@ namespace ToyLanguage_NET {
 
 		private void oneStep () {
 			try {
-				ctrl.oneStep (currentProgram);
+				ctrl.oneStep ();
 //				ctrl.serializeProgramState ();
 			} catch (MyStmtExecException) {
 				print ("Finished");
-				currentProgram = null;
+//				currentProgram = null;
 			} catch (UninitializedVariableException) {
 				print ("A variable is not initialized");
 			} catch (NoSuchKeyException) {
@@ -51,11 +51,11 @@ namespace ToyLanguage_NET {
 
 		private void allStep () {
 			try {
-				ctrl.allStep (currentProgram);
+				ctrl.allStep ();
 //				ctrl.serializeProgramState ();
 			} catch (MyStmtExecException) {
 				print ("Finished");
-				currentProgram = null;
+//				currentProgram = null;
 			} catch (UninitializedVariableException) {
 				print ("A variable is not initialized");
 			} catch (NoSuchKeyException) {
@@ -357,16 +357,24 @@ namespace ToyLanguage_NET {
 		}
 
 		private void inputProgram () {
-			IStmt prgStatement = new CompStmt(new NewStmt("a", new ConstExp(10)), new CompStmt(new WriteHeapStmt("a", new ConstExp(4)),  new CompStmt(new AssignStmt("b", new ConstExp(1)), new PrintStmt(new ReadHeapExp("b")))));
+//			IStmt prgStatement = new CompStmt(new NewStmt("a", new ConstExp(10)), new CompStmt(new WriteHeapStmt("a", new ConstExp(4)),  new CompStmt(new AssignStmt("b", new ConstExp(1)), new PrintStmt(new ReadHeapExp("b")))));
 				//new CompStmt (new AssignStmt ("a", new ArithExp (new ConstExp (2), "-", new ConstExp (3))), new CompStmt (new IfThenStmt (new VarExp ("a"), new AssignStmt ("v", new ConstExp (2))), new PrintStmt (new VarExp ("v"))));
 			//inputStatement ();
-	
-			ListInterface<PrgState> programs = new MyLibraryList<PrgState> ();
+			IStmt st1 = new AssignStmt("v", new ConstExp(10));
+			IStmt st2 = new NewStmt("a", new ConstExp(22));
+			IStmt st3 = new AssignStmt("v", new ConstExp(32));
+			IStmt st4 = new PrintStmt(new VarExp("v"));
+			IStmt st5 = new PrintStmt(new ReadHeapExp("a"));
+			IStmt st8 = new ForkStmt(new CompStmt(new WriteHeapStmt("a", new ConstExp(30)), new CompStmt(st3, new CompStmt(st4, st5))));
+			IStmt st6 = new PrintStmt(new VarExp("v"));
+			IStmt st7 = new PrintStmt(new ReadHeapExp("a"));
+			IStmt prgStatement = new CompStmt(st1, new CompStmt(st2, new CompStmt(st8, new CompStmt(st6,new CompStmt (st7, new CompStmt(new SkipStmt(), new CompStmt(new SkipStmt(), new SkipStmt() )))))));
+
+			List<PrgState> programs = new List<PrgState> ();
 			programs.Add (new PrgState (new MyLibraryStack<IStmt> (), new MyLibraryDictionary<String, int> (), new MyLibraryHeap<int> (), new MyLibraryList<int> (), prgStatement));
+			programs.ForEach(p => print(p.ToString()));
 			ctrl = new Controller (new MyRepository (programs));
 			ctrl.serializeProgramState ();
-			currentProgram = ctrl.CrtPrgState;
-			print (currentProgram.PrintState ());
 
 		}
 
@@ -374,8 +382,6 @@ namespace ToyLanguage_NET {
 			Repository repo = new MyRepository ();
 			repo.deserializePrgStatet ();
 			ctrl = new Controller(repo);
-			currentProgram = ctrl.CrtPrgState;
-			print (currentProgram.PrintState ());
 		}
 
 		private void firstMenu () {
@@ -388,7 +394,7 @@ namespace ToyLanguage_NET {
 
 			try {
 				int opt = readInteger ("Option: ");
-				if (opt != 1 && opt != 5 && currentProgram == null) {
+				if (opt != 1 && opt != 5 && ctrl == null) {
 					print ("There is no program, please insert a program");
 				} else {
 					switch (opt) {
