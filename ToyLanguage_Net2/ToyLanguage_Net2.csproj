@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{08C70136-9D83-42F5-8810-E72F3FEB435E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ToyLanguage_Net2</RootNamespace>
+    <AssemblyName>ToyLanguage_Net2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+    <Reference Include="monodoc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Controller\Controller.cs" />
+    <Compile Include="src\Controller\Exception\ControllerException.cs" />
+    <Compile Include="src\Controller\Exception\MyStmtExecException.cs" />
+    <Compile Include="src\Models\ModelException.cs" />
+    <Compile Include="src\Models\Expressions\ArithExp.cs" />
+    <Compile Include="src\Models\Expressions\ConstExp.cs" />
+    <Compile Include="src\Models\Expressions\EmptyInterface.cs" />
+    <Compile Include="src\Models\Expressions\Exp.cs" />
+    <Compile Include="src\Models\Expressions\Expr.cs" />
+    <Compile Include="src\Models\Expressions\LogicalExp.cs" />
+    <Compile Include="src\Models\Expressions\NotExp.cs" />
+    <Compile Include="src\Models\Expressions\ReadExp.cs" />
+    <Compile Include="src\Models\Expressions\ReadHeapExp.cs" />
+    <Compile Include="src\Models\Expressions\RelationalExp.cs" />
+    <Compile Include="src\Models\Expressions\VarExp.cs" />
+    <Compile Include="src\Models\Expressions\Exception\DivisionByZeroException.cs" />
+    <Compile Include="src\Models\Expressions\Exception\UninitializedVariableException.cs" />
+    <Compile Include="src\Models\Heap\HeapInterface.cs" />
+    <Compile Include="src\Models\Heap\MyLibraryHeap.cs" />
+    <Compile Include="src\Models\Heap\Exception\HashIndexOutOfBoundsException.cs" />
+    <Compile Include="src\Models\List\ListInterface.cs" />
+    <Compile Include="src\Models\List\MyArrayList.cs" />
+    <Compile Include="src\Models\List\MyLibraryList.cs" />
+    <Compile Include="src\Models\List\Exception\IndexOutOfBoundsException.cs" />
+    <Compile Include="src\Models\Map\MapInterface.cs" />
+    <Compile Include="src\Models\Map\MyArrayDictionary.cs" />
+    <Compile Include="src\Models\Map\MyLibraryDictionary.cs" />
+    <Compile Include="src\Models\Map\Exception\NoSuchKeyException.cs" />
+    <Compile Include="src\Models\PrgState\PrgState.cs" />
+    <Compile Include="src\Models\Stack\MyArrayStack.cs" />
+    <Compile Include="src\Models\Stack\MyLibraryStack.cs" />
+    <Compile Include="src\Models\Stack\StackInterface.cs" />
+    <Compile Include="src\Models\Stack\Exception\EmptyStackException.cs" />
+    <Compile Include="src\Models\Statements\AssignStmt.cs" />
+    <Compile Include="src\Models\Statements\CompStmt.cs" />
+    <Compile Include="src\Models\Statements\ForkStmt.cs" />
+    <Compile Include="src\Models\Statements\IStmt.cs" />
+    <Compile Include="src\Models\Statements\IfStmt.cs" />
+    <Compile Include="src\Models\Statements\IfThenStmt.cs" />
+    <Compile Include="src\Models\Statements\NewStmt.cs" />
+    <Compile Include="src\Models\Statements\PrintStmt.cs" />
+    <Compile Include="src\Models\Statements\SkipStmt.cs" />
+    <Compile Include="src\Models\Statements\SwitchStmt.cs" />
+    <Compile Include="src\Models\Statements\WhileStmt.cs" />
+    <Compile Include="src\Models\Statements\WriteHeapStmt.cs" />
+    <Compile Include="src\Repository\MyRepository.cs" />
+    <Compile Include="src\Repository\Repository.cs" />
+    <Compile Include="src\Repository\Exception\EmptyRepositoryException.cs" />
+    <Compile Include="src\Repository\Exception\RepositoryException.cs" />
+    <Compile Include="src\Views\MyConsole.cs" />
+    <Compile Include="src\Views\UnexpectedTypeException.cs" />
+    <Compile Include="src\Views\Exception\ViewException.cs" />
+    <Compile Include="src\Views\ViewControllers\MainWindow.cs" />
+    <Compile Include="src\Views\ViewControllers\InputProgramWindow.cs" />
+    <Compile Include="src\Views\ViewControllers\OneStepWindow.cs" />
+    <Compile Include="src\Views\ViewControllers\AllStepWindowWindow.cs" />
+    <Compile Include="src\Views\ViewControllers\DeserializeWindow.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.MainWindow.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.InputProgramWindow.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.DeserializeWindow.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.AllStepWindowWindow.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.OneStepWindow.cs" />
+    <Compile Include="src\Views\ViewControllers\MyDialogBox.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.MyDialogBox.cs" />
+    <Compile Include="src\Views\ViewControllers\MyDialogText.cs" />
+    <Compile Include="gtk-gui\ToyLanguage_NET.MyDialogText.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="src\Views\ViewControllers\" />
+  </ItemGroup>
+</Project>
