@@ -41,7 +41,7 @@ namespace ToyLanguage_NET {
 				state.ExeStack.Push (this);
 				state.ExeStack.Push (this.Stmt);
 			}
-			return state;
+			return null;
 		}
 
 		#endregion

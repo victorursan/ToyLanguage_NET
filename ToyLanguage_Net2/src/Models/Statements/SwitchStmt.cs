@@ -67,7 +67,7 @@ namespace ToyLanguage_NET {
 			IStmt ifSwitch = new IfStmt (difSwitch2, DefaultCase, Case1);
 			IStmt switchStmt = new IfStmt (difSwitch, ifSwitch, Case2);
 			state.ExeStack.Push (switchStmt);
-			return state;
+			return null;
 		}
 
 		#endregion

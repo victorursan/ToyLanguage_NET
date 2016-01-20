@@ -35,7 +35,19 @@ namespace ToyLanguage_NET {
 		}
 			
 		protected void newTouched (object sender, EventArgs e) {
-			IStmt stmt = newStatement("First Statement:");
+			
+			IStmt st1 = new AssignStmt("v", new ConstExp(10));
+			IStmt st2 = new NewStmt("a", new ConstExp(22));
+			IStmt st3 = new AssignStmt("v", new ConstExp(32));
+			IStmt st4 = new PrintStmt(new VarExp("v"));
+			IStmt st5 = new PrintStmt(new ReadHeapExp("a"));
+			IStmt st8 = new ForkStmt(new CompStmt(new WriteHeapStmt("a", new ConstExp(30)), new CompStmt(st3, new CompStmt(st4, st5))));
+			IStmt st6 = new PrintStmt(new VarExp("v"));
+			IStmt st7 = new PrintStmt(new ReadHeapExp("a"));
+			IStmt prgStatement = new CompStmt(st1, new CompStmt(st2, new CompStmt(st8, new CompStmt(st6,new CompStmt (st7, new CompStmt(new SkipStmt(), new CompStmt(new SkipStmt(), new SkipStmt() )))))));
+
+			IStmt stmt = prgStatement;
+				//newStatement("First Statement:");
 			List<PrgState> programs = new List<PrgState>();
 			programs.Add(new PrgState(new MyLibraryStack<IStmt>(), new MyLibraryDictionary<string, int>(), new MyLibraryHeap<int>(), new MyLibraryList<int>(), stmt));
 			ctrl.PrgList = programs;
@@ -103,22 +115,18 @@ namespace ToyLanguage_NET {
 					IStmt first = newStatement("First Statement:");
 					IStmt second = newStatement("Second Statement:");
 					return new CompStmt(first, second);
-
 				case 1:
 					String name = newString("Name: ");
 					Exp value = newExpression("Assigned value: ");
 					return new AssignStmt(name, value);
-
 				case 2:
 					Exp expression = newExpression("Expression: ");
 					return new PrintStmt(expression);
-
 				case 3:
-					Exp condition = newExpression("Condition: ");
-					IStmt thenStatement = newStatement("Then branch: ");
-					IStmt elseStatement = newStatement("Else branch: ");
-					return new IfStmt(condition, thenStatement, elseStatement);
-
+					Exp condition = newExpression ("Condition: ");
+					IStmt thenStatement = newStatement ("Then branch: ");
+					IStmt elseStatement = newStatement ("Else branch: ");
+					return new IfStmt (condition, thenStatement, elseStatement);
 				case 4:
 					Exp wcondition = newExpression("Condition: ");
 					IStmt body = newStatement("Body: ");

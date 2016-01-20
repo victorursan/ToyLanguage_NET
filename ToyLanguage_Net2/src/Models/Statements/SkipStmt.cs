@@ -12,7 +12,7 @@ namespace ToyLanguage_NET {
 		}
 
 		public PrgState execute (PrgState state) {
-			return state;
+			return null;
 		}
 
 		#endregion

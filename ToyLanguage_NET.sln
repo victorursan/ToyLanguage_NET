@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyLanguage_Net2", "ToyLanguage_Net2\ToyLanguage_Net2.csproj", "{08C70136-9D83-42F5-8810-E72F3FEB435E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyLanguage_NET", "ToyLanguage_Net2\ToyLanguage_NET.csproj", "{08C70136-9D83-42F5-8810-E72F3FEB435E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -37,7 +37,7 @@ namespace ToyLanguage_NET {
 		public PrgState execute (PrgState state) {
 			state.ExeStack.Push (second);
 			state.ExeStack.Push (first);
-			return state;
+			return null;
 		}
 
 		#endregion

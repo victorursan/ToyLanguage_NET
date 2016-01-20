@@ -66,18 +66,16 @@ namespace ToyLanguage_NET {
 				List<PrgState> newPrgList = (from tsk in taskList
 				                             where tsk.Result != null
 				                             select tsk.Result).ToList ();
-				newPrgList.AddRange (prgList.Where (p => !newPrgList.Any (q => q.Id == p.Id)).ToList ());
-
-//			if (printFlag) {
-//				newPrgList.ForEach (p => Console.Write (p));
-//			}
+//				newPrgList.AddRange (prgList.Where (p => !newPrgList.Any (q => q.Id == p.Id)).ToList ());
+				prgList.AddRange(newPrgList);
 			
 				if (logFlag) {
 					repo.logPrgState ();
 				}
-				repo.PrgStates = newPrgList;
+				repo.PrgStates = prgList;
 
 				programsOutput += printPrgList();
+
 			} catch (Exception e) {
 				Console.Write ("something" + e.StackTrace);
 			}
@@ -90,6 +88,7 @@ namespace ToyLanguage_NET {
 		}
 
 		public void allStep () {
+			programsOutput = "";
 			while (true) {
 				List<PrgState> prgList = removeCompletedPrg (repo.PrgStates);
 				if (prgList.Count () == 0) {

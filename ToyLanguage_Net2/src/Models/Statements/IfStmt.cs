@@ -53,7 +53,7 @@ namespace ToyLanguage_NET {
 			} else {
 				state.ExeStack.Push (ElseS);
 			}
-			return state;
+			return null;
 		}
 
 		#endregion

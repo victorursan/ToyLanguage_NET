@@ -28,7 +28,7 @@ namespace ToyLanguage_NET {
 			MapInterface<String, int> symTbl = state.SymTable;
 			HeapInterface<int> heap = state.HeapTable;
 			output.Add (Exp.eval (symTbl, heap));
-			return state;
+			return null;
 		}
 
 		#endregion

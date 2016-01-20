@@ -1,4 +1,5 @@
 ﻿using System;
+using Gtk;
 
 namespace ToyLanguage_NET {
 	public partial class MyDialogText : Gtk.Dialog {
@@ -21,8 +22,14 @@ namespace ToyLanguage_NET {
 		}
 
 		protected void okTouched (object sender, EventArgs e) {
-			myDelegate.MyString = txtField.Text;
-			this.Hide ();
+			if (!txtField.Text.Equals ("")) {
+				myDelegate.MyString = txtField.Text;
+				this.Hide ();
+			} else {
+				MessageDialog md = new MessageDialog (this, DialogFlags.Modal, MessageType.Error, ButtonsType.Ok, "Invalid input");
+				md.Run();
+				md.Destroy();
+			}
 		}
 	}
 }

@@ -39,7 +39,7 @@ namespace ToyLanguage_NET {
 			HeapInterface<int> heap = state.HeapTable;
 			int val = exp.eval (symTbl, heap);
 			symTbl [id] = val;
-			return state;
+			return null;
 		}
 
 		#endregion

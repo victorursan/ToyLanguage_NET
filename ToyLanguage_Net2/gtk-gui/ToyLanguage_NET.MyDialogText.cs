@@ -65,7 +65,7 @@ namespace ToyLanguage_NET
 			this.btnOk.UseStock = true;
 			this.btnOk.UseUnderline = true;
 			this.btnOk.Label = "gtk-ok";
-			this.AddActionWidget (this.btnOk, -5);
+			w5.Add (this.btnOk);
 			global::Gtk.ButtonBox.ButtonBoxChild w6 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w5 [this.btnOk]));
 			w6.Expand = false;
 			w6.Fill = false;

@@ -6,7 +6,6 @@ namespace ToyLanguage_NET {
 		private int currentPosition;
 		private String[] elements;
 
-
 		public InputProgramWindow MyDelegate {
 			set {
 				myDelegate = value;
@@ -27,12 +26,10 @@ namespace ToyLanguage_NET {
 				}
 			}
 		}
-
-
+			
 		public MyDialogBox () {
 			this.Build ();
 		}
-
 
 		protected void changedValue (object sender, EventArgs e) {
 			currentPosition = comboBox.Active;
