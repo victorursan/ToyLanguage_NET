@@ -5,7 +5,7 @@
   </configuration>
   <import>
     <widget-library name="glade-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
-    <widget-library name="../bin/Debug/ToyLanguage_Net2.exe" internal="true" />
+    <widget-library name="../bin/Debug/ToyLanguage_NET.exe" internal="true" />
   </import>
   <widget class="Gtk.Window" id="ToyLanguage_NET.MainWindow" design-size="400 300">
     <property name="MemberName" />
@@ -522,14 +522,6 @@
           </packing>
         </child>
       </widget>
-    </child>
-  </widget>
-  <widget class="Gtk.Window" id="ToyLanguage_NET.TestWindow" design-size="400 300">
-    <property name="MemberName" />
-    <property name="Title" translatable="yes">TestWindow</property>
-    <property name="WindowPosition">CenterOnParent</property>
-    <child>
-      <placeholder />
     </child>
   </widget>
 </stetic-interface>

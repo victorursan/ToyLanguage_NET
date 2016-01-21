@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 namespace ToyLanguage_NET {
 	public class Controller {
 		private Repository repo;
-		//		private PrgState crtPrgState;
 		private bool printFlag;
 		private bool logFlag;
 		private String programsOutput;
@@ -42,7 +41,6 @@ namespace ToyLanguage_NET {
 			logFlag = true;
 			repo = thisRepo;
 			programsOutput = "";
-//			crtPrgState = repo.getCrtProgram ();
 		}
 
 		public void serializeProgramState () {

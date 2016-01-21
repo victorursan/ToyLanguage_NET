@@ -16,6 +16,10 @@ namespace ToyLanguage_NET {
 
 			win.Show ();
 			Application.Run ();
+
 		}
+
 	}
+
+
 }

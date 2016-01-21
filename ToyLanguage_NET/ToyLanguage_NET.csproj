@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{08C70136-9D83-42F5-8810-E72F3FEB435E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ToyLanguage_Net2</RootNamespace>
-    <AssemblyName>ToyLanguage_Net2</AssemblyName>
+    <RootNamespace>ToyLanguage_NET</RootNamespace>
+    <AssemblyName>ToyLanguage_NET</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -129,7 +129,6 @@
     <Compile Include="gtk-gui\ToyLanguage_NET.MyDialogBox.cs" />
     <Compile Include="src\Views\ViewControllers\MyDialogText.cs" />
     <Compile Include="gtk-gui\ToyLanguage_NET.MyDialogText.cs" />
-    <Compile Include="gtk-gui\ToyLanguage_NET.TestWindow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
