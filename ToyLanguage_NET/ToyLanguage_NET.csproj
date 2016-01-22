@@ -129,6 +129,7 @@
     <Compile Include="gtk-gui\ToyLanguage_NET.MyDialogBox.cs" />
     <Compile Include="src\Views\ViewControllers\MyDialogText.cs" />
     <Compile Include="gtk-gui\ToyLanguage_NET.MyDialogText.cs" />
+    <Compile Include="src\Models\Statements\RepeatStmt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

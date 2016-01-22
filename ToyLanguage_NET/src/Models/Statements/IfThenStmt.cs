@@ -36,7 +36,7 @@ namespace ToyLanguage_NET {
 
 		public PrgState execute (PrgState state) {
 			state.ExeStack.Push (new IfStmt (Exp, ThenS, new SkipStmt ()));
-			return state;
+			return null;
 		}
 
 		#endregion

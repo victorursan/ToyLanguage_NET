@@ -29,14 +29,16 @@ namespace ToyLanguage_NET {
 
 		public void logPrgState() {
 			using (StreamWriter w = File.AppendText("logProgramState.txt")) {
-				w.WriteLine(this.prgStates.ToString());
+				foreach (PrgState p in prgStates) {
+					w.WriteLine(p.ToString());
+				}
 			}
 
 		}
 		public void serializePrgStatet () {
 			IFormatter formatter = new BinaryFormatter(  );
 			using (FileStream s = File.Create ("serialized.bin")) {
-				formatter.Serialize (s, prgStates);
+				formatter.Serialize (s, prgStates.ToString());
 			}
 		}
 
